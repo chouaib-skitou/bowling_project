@@ -16,7 +16,8 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.8, 3.9] 
+        # python-version: [3.8, 3.9] 
+        python-version: [3.9] 
 
     steps:
     - uses: actions/checkout@v3
@@ -29,7 +30,7 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run main.py
-      run: python Bowling_score_manager_ultimate/main.py
+      run: python main.py
     # - name: Run tests
     #   run: |
     #     # Add commands to run your tests here
