@@ -1,6 +1,6 @@
-# **BOWLING SCORE MANAGER ULTIMATEµ**
+# **BOWLING SCORE MANAGER ULTIMATE**
 
-#Groupe : Julien Marty, Matthieu Nanfack, Hamoudia Camara, Chouaib Skitou, David Kalala Kabambi 
+# Groupe : Julien Marty, Matthieu Nanfack, Hamoudia Camara, Chouaib Skitou, David Kalala Kabambi 
 
 ## Technologies utilisées 
 - Python 
@@ -13,4 +13,4 @@
 - Chouaib :
 - Hamoudia :
 - Mathieu :
-- Julien :
+- Julien : 
