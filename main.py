@@ -18,7 +18,7 @@ num_player_selection = False
 num_players = 0
 playersScores = []
 
-
+#################################" Choix du nombre de joueurs  ##########################################"
 def init_window():
     def AffichageJoueur(nb):
         print(nb)
@@ -48,10 +48,35 @@ def init_window():
     btnValider.pack()
     window.mainloop()
 
+#################################" Affichage des Scores##########################################"
+def window_score():
+    global window, canvas
+    window = tkinter.Tk()
+    window.title('Score final')
+
+    # window gestion
+    canvas = tkinter.Canvas(window, width=CANVA_WIDTH, height=CANVA_HEIGHT, bg='white')
+    canvas.place(x=10, y=10)
+    window_size_str = "{0}x{1}".format(WINDOW_WIDTH, WINDOW_HEIGHT)
+    window.geometry(window_size_str)
+
+    #Affichage des scores
+    lbl_score_player = tkinter.Label(window, text="Voici les scores :")
+    lbl_score_player.pack()
+
+    #dictionnaire contenant le nom de chaque joueur et son score final
+    tab_joueur = {"Player1": 50, "Player2": 80, "Player3": 11}
+
+    for player, score in tab_joueur.items():
+        lbl_score_player = Label(window, text=f"{player} : {score}")
+        lbl_score_player.pack()
+
+    window.mainloop()
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    init_window()
+    #init_window()
+    window_score()
 
 
 def score_manager():
