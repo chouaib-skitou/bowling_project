@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: Bowling_score_manager_ultimate
+        working-directory: ./
 
     strategy:
       matrix:
