@@ -1,7 +1,5 @@
-
-def sum(a, b):
-    return a + b
+from interfaces.players_list import players_list
 
 
-
-print(sum(2,2))
+if __name__ == '__main__':
+    players_list(2)
