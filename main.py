@@ -1,12 +1,3 @@
-
-def sum(a, b):
-    return a + b
-
-
-
-print(sum(2,2))
-
-
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import tkinter
@@ -56,16 +47,14 @@ def init_window():
     label.pack()
 
 
-
     window.mainloop()
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    print("Running...")
     init_window()
 
 
 def score_manager():
     return
-
-

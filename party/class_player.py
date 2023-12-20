@@ -1,4 +1,7 @@
-class player:
+import party
+
+
+class Player:
     id = -1
     name = ""
     total_score = 0
