@@ -6,6 +6,7 @@ on:
     - master
     - develop
     - feature/setup_workflows
+    - feature/setup_project
   pull_request:
 jobs:
   build:
