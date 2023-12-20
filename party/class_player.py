@@ -15,7 +15,7 @@ class Player:
 
     # The function to call at the start of player's frame
     # Should end at the end of the frame
-    def next_turn(self):
+    def next_turn(self, current_frame):
         return
 
     def checkSkittlesInTen(self):
