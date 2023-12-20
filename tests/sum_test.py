@@ -1,16 +1,9 @@
-# tests/sum_test.py
+# tests/test_sum.py
 
-import unittest
-import sys
-sys.path.append('C:/Users/pc_su/Desktop/Polytech Paris-Saclay/APP4/Qualité Logicielle/bowling_project/Bowling_score_manager_ultimate')
-from main import sum  
+from main import sum
 
-class TestSum(unittest.TestCase):
-    def test_sum(self):
-        self.assertEqual(sum(2, 2), 4)
-        self.assertEqual(sum(-1, 1), 0)
-        self.assertEqual(sum(-1, -1), -2)
-        self.assertEqual(sum(0, 0), 0)
-
-if __name__ == '__main__':
-    unittest.main()
+def test_sum():
+    assert sum(2, 2) == 4
+    assert sum(-1, 1) == 0
+    assert sum(-1, -1) == -2
+    assert sum(0, 0) == 0
