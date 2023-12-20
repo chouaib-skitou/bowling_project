@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - master
+    - develop
     - feature/setup_workflows
   pull_request:
 jobs:
@@ -31,7 +32,5 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run main.py
       run: python main.py
-    # - name: Run tests
-    #   run: |
-    #     # Add commands to run your tests here
-    #     # Example: python -m unittest discover -s tests
+    - name: Run tests
+      run: Run tests.py
