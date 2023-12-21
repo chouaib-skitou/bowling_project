@@ -5,7 +5,7 @@
 ## Technologies utilisées 
 - Python 
 ## Tests 
-- Pour l'instant on ne sait pas encore 
+- pytest
 ## Integration continue ( CI/CD ) 
 - Github Actions 
 ## Compétences 
