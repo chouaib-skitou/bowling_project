@@ -1,8 +1,7 @@
 # tests/sum_test.py
 
+from main import sum
 import unittest
-import sys
-sys.path.append('C:/Users/pc_su/Desktop/Polytech Paris-Saclay/APP4/Qualité Logicielle/bowling_project/Bowling_score_manager_ultimate')
 
 class TestSum(unittest.TestCase):
     def test_sum(self):
