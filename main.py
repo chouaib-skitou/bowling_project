@@ -1,7 +1,8 @@
+def sum(a,b):
+    return a+b
 
-def sum(a, b):
-    return a + b
+from interfaces.main_frame import main_frame
 
 
-
-print(sum(2,2))
+if __name__ == '__main__':
+    main_frame()
