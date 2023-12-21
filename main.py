@@ -1,3 +1,6 @@
+def sum(a,b):
+    return a+b
+
 from interfaces.players_list import players_list
 
 
