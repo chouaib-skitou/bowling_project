@@ -5,22 +5,8 @@ from tkinter import ttk
 window = config.window
 canvas = config.canvas
 
-CANVA_WIDTH = config.CANVA_WIDTH
-CANVA_HEIGHT = config.CANVA_HEIGHT
-WINDOW_WIDTH = config.WINDOW_WIDTH
-WINDOW_HEIGHT = config.WINDOW_HEIGHT
 
-
-def players_list(count):
-    global window, canvas
-    window = tkinter.Tk()  # Corrected from ttk.Tk() to tkinter.Tk()
-    window.title('Bowling score manager ultimate')
-
-    # Gestion de la fenêtre
-    canvas = tkinter.Canvas(window, width=CANVA_WIDTH, height=CANVA_HEIGHT)  # Corrected from ttk.Canvas to tkinter.Canvas
-    canvas.place(x=10, y=10)
-    window_size_str = "{0}x{1}".format(WINDOW_WIDTH, WINDOW_HEIGHT)
-    window.geometry(window_size_str)
+def players_list(count,window):
 
     # Centrer les widgets dans la fenêtre
     frame = ttk.Frame(window)
@@ -33,5 +19,3 @@ def players_list(count):
 
     # Ajouter le bouton de validation
     ttk.Button(frame, text="Validate", width=20).grid(row=3, column=0, columnspan=2, pady=10)
-
-    window.mainloop()
