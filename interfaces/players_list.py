@@ -1,4 +1,5 @@
 import tkinter
+from interfaces.play_party import play_party
 from tkinter import *
 from tkinter import ttk
 
@@ -9,9 +10,19 @@ def players_list(count, window, callback):
         frame.pack_forget()
         callback()
 
-    def playParty(entries):
+    def hide_player_list():
+        entry.grid_forget()
+        btnValidate.grid_forget()
+        btnBack.grid_forget()
+
+    def reinit_player_list():
+        hide_player_list()
+        init_window(window)
+
+    def call_play_party(entries,window):
         for i, entry in enumerate(entries):
             print(f"Player {i + 1}: {entry.get()}")
+        play_party(entries,window)
 
     # Centering the widgets in the window
     frame = ttk.Frame(window)
@@ -24,5 +35,7 @@ def players_list(count, window, callback):
         entry.grid(row=i, column=1, padx=10, pady=10)
         entries.append(entry)
 
-    ttk.Button(frame, text="Validate", width=20, command=lambda: playParty(entries)).grid(row=count, column=0, columnspan=2, pady=10)
-    ttk.Button(frame, text="Back", width=20, command=show_player_choice).grid(row=count+1, column=0, columnspan=2, pady=10)
+    btnValidate = ttk.Button(frame, text="Validate", width=20, command=lambda: [hide_player_list(),call_play_party(entries,window)])
+    btnValidate.grid(row=count, column=0, columnspan=2, pady=10)
+    btnBack = ttk.Button(frame, text="Back", width=20, command=show_player_choice)
+    btnBack.grid(row=count+1, column=0, columnspan=2, pady=10)

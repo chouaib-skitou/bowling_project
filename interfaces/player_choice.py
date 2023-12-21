@@ -18,7 +18,7 @@ def init_window(window):
         players_list(nb, window, reinit_player_choice)
 
     # Selection of the number of players
-    lbl_number_player = tkinter.Label(window, text="Choisissez le nombre de joueurs :")
+    lbl_number_player = tkinter.Label(window, text="Choisissez le nombre de joueurs 😊")
     lbl_number_player.pack()
 
     list_of_number_player = [1, 2, 3, 4]
