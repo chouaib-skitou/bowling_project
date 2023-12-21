@@ -5,6 +5,8 @@ on:
     branches:
     - master
     - develop
+    - feature/setup_workflows
+    - feature/setup_project
     - feature/interface_step_2
   pull_request:
 jobs:
