@@ -1,4 +1,7 @@
 
+def sum(a,b):
+    return a+b
+
 from interfaces.ChoixPlayer import init_window
 
 
