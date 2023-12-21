@@ -17,5 +17,8 @@
 - David : 
 - Chouaib :
 - Hamoudia :
-- Mathieu :
+- Matthieu :
 - Julien : 
+
+## Suivi du projet :
+- Lancer le projet bowling en mode console : exécuter le fichier run_party dans le package package_party
