@@ -8,6 +8,7 @@ on:
     - feature/setup_workflows
     - feature/setup_project
     - feature/interface_step_2
+    - feature/setup_test_player
   pull_request:
 jobs:
   build:
