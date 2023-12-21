@@ -1,4 +1,5 @@
 from . import config 
+from interfaces.play_party import play_party
 import tkinter
 from tkinter import *
 from tkinter import ttk 
@@ -6,9 +7,10 @@ window = config.window
 canvas = config.canvas
 
 #fonction de récupération du pseudo du joueur
-def playParty(entries):
+def call_play_party(entries,window):
         for i, entry in enumerate(entries):
             print(f"Player {i + 1}: {entry.get()}")
+        play_party(entries,window)
 
 def players_list(count,window):
 
@@ -27,4 +29,4 @@ def players_list(count,window):
         entries.append(entry)
 
     # Ajouter le bouton de validation
-    ttk.Button(frame, text="Validate", width=20,command = lambda:playParty(entries)).grid(row=3, column=0, columnspan=2, pady=10)
+    ttk.Button(frame, text="Validate", width=20,command = lambda:call_play_party(entries,window)).grid(row=3, column=0, columnspan=2, pady=10)
