@@ -1,4 +1,4 @@
-# package_tests/sum_test.py
+# tests/sum_test.py
 
 import unittest
 import sys
