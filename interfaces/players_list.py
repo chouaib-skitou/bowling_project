@@ -1,30 +1,41 @@
-from . import config 
 import tkinter
+from interfaces.play_party import play_party
 from tkinter import *
-from tkinter import ttk 
-window = config.window
-canvas = config.canvas
+from tkinter import ttk
 
-#fonction de récupération du pseudo du joueur
-def playParty(entries):
+def players_list(count, window, callback):
+    def show_player_choice():
+        for widget in frame.winfo_children():
+            widget.destroy()
+        frame.pack_forget()
+        callback()
+
+    def hide_player_list():
+        entry.grid_forget()
+        btnValidate.grid_forget()
+        btnBack.grid_forget()
+
+    def reinit_player_list():
+        hide_player_list()
+        init_window(window)
+
+    def call_play_party(entries,window):
         for i, entry in enumerate(entries):
             print(f"Player {i + 1}: {entry.get()}")
+        play_party(entries,window)
 
-def players_list(count,window):
-
-    # Centrer les widgets dans la fenêtre
+    # Centering the widgets in the window
     frame = ttk.Frame(window)
     frame.place(relx=0.5, rely=0.5, anchor='center')
 
-    # Liste pour stocker les objets Entry
     entries = []
-
-    # Définir les étiquettes et les entrées pour les joueurs en utilisant une boucle
     for i in range(count):
         ttk.Label(frame, text=f'Player {i + 1}:').grid(row=i, column=0, padx=10, pady=10)
         entry = ttk.Entry(frame, width=20)
         entry.grid(row=i, column=1, padx=10, pady=10)
         entries.append(entry)
 
-    # Ajouter le bouton de validation
-    ttk.Button(frame, text="Validate", width=20,command = lambda:playParty(entries)).grid(row=3, column=0, columnspan=2, pady=10)
+    btnValidate = ttk.Button(frame, text="Validate", width=20, command=lambda: [hide_player_list(),call_play_party(entries,window)])
+    btnValidate.grid(row=count, column=0, columnspan=2, pady=10)
+    btnBack = ttk.Button(frame, text="Back", width=20, command=show_player_choice)
+    btnBack.grid(row=count+1, column=0, columnspan=2, pady=10)

@@ -1,4 +1,3 @@
-import party_manager
 
 
 class Player:
@@ -11,6 +10,7 @@ class Player:
     def __init__(self, id, name):
         self.id = id
         self.name = name
+
 
     # The function to call at the start of player's frame
     # Should end at the end of the frame
@@ -124,3 +124,5 @@ class Player:
             par_frame_score.append("X")
         else:
             par_frame_score.append(parSkittlesTouched)
+
+

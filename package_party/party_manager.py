@@ -1,4 +1,4 @@
-import class_player
+
 
 NUMER_OF_FRAME = 10
 players_list = []
@@ -6,6 +6,7 @@ players_list = []
 
 def add_player(player):
     players_list.append(player)
+
 
 
 def next_player_frame(player_id, current_frame):
@@ -18,3 +19,6 @@ def start_game():
     for i in range(NUMER_OF_FRAME):
         for j in range(len(players_list)):
             next_player_frame(j, i)
+
+
+
