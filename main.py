@@ -2,8 +2,8 @@
 def sum(a,b):
     return a+b
 
-from interfaces.ChoixPlayer import init_window
+from interfaces.main_frame import main_frame
 
 
 if __name__ == '__main__':
-    init_window()
+    main_frame()
