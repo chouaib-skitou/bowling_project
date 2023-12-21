@@ -7,6 +7,7 @@ on:
     - develop
     - feature/setup_workflows
     - feature/setup_project
+    - feature/interface_step_2
   pull_request:
 jobs:
   build:
@@ -34,6 +35,6 @@ jobs:
     - name: Run tests
       # run: python -m unittest discover -s tests
       run: pytest tests
-    - name: Run project
-      run: python main.py
+    # - name: Run project
+    #   run: python main.py
     

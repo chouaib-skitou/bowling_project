@@ -1,11 +1,16 @@
 # **BOWLING SCORE MANAGER ULTIMATE**
 
-# Groupe : Julien Marty, Matthieu Nanfack, Hamoudia Camara, Chouaib Skitou, David Kalala Kabambi 
+# Groupe : 
+- Julien Marty, 
+- Matthieu Nanfack
+- Hamoudia Camara
+- Chouaib Skitou
+- David Kalala Kabambi 
 
 ## Technologies utilisées 
 - Python 
 ## Tests 
-- Pour l'instant on ne sait pas encore 
+- pytest
 ## Integration continue ( CI/CD ) 
 - Github Actions 
 ## Compétences 
