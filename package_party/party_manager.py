@@ -1,4 +1,4 @@
-import class_player
+from package_party import class_player
 
 NUMER_OF_FRAME = 0
 NUMBER_OF_SKITLES = 0

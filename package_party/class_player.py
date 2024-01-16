@@ -27,56 +27,59 @@ class Player:
         print(f"Frame {current_frame + 1} :")
         frame_score = []  # stock le nombre de quilles renversées pour
 
-        print("frameNumber (real number before incrementation) : ", current_frame)
+        print("frameNumber", current_frame)
         if (current_frame == party_manager.NUMER_OF_FRAME - 1):  # LA DERNIERE FRAME
             print("Derniere frame !")
-            print(f"\tLancer 1:")
-            skittlesTouched = self.askAndCheckSkittlesInTen()  # demande nombre de quilles renversées
+            finalLaunchNumber = 0  # determine le nombre de lance effectue dans la derniere frame
+            counter = 0
+            while (
+                    finalLaunchNumber < nbLaunchFinalFrame):  # Droit a 3 lances si strike ou spare -> 1 lance supplementaire
+                if ((len(frame_score) == 2) and ("X" not in frame_score) and (
+                        "|" not in frame_score)):  # cas où on a fait ni strike ni spare
+                    finalLaunchNumber += 1
+                    counter += 1
+                    break
 
-            if (skittlesTouched == 10):  # 1er lancer de la derniere frame
-                frame_score.append('X')
-                print(f"\t\tVous avez fait un strike au lance 1 de la derniere frame ! Vous avez encore 2 lancer !")
+                print(f"\tLancé {finalLaunchNumber + 1} :")  # 1ER LANCE
 
-                for e in range(1, 3):  # De 1 à 3 pour garder la continuité des lancers (lancers 2 et 3)
-                    print(f"\tLancer {e + 1} :")
-                    skittlesTouched = self.askAndCheckSkittlesInTen()
-                    if (e == 1):
-                        if (skittlesTouched == 10):
-                            frame_score.append('X')
-                            print(
-                                f"\t\tVous avez fait un strike au lance 2 de la derniere frame ! Vous avez encore 1 lancer !")
+                skittlesTouched = self.checkSkittlesInTen()
+
+                # if(counter == 1): #verifie la coherence au 2eme lance
+                #    skittlesTouched = checkCoherentSkittlesLastFrame(skittlesTouched,frame_score, counter-1)
+
+                if (skittlesTouched == 10):
+                    finalLaunchNumber += 1
+                    nbLaunchFinalFrame = 3  # Définis le nombre de lancés restants =2 si strike au premier lance. On n'a plus que 2 lancés
+                    # print(f"\t\tVous avez fait un strike au lance {finalLaunchNumber + 1} de la derniere frame ! Vous avez encore {nbLaunchFinalFrame-1} lancés !")
+                    print(f"\t\tVous avez fait un strike au lance {finalLaunchNumber} de la derniere frame !" + (
+                        f" Vous avez encore {nbLaunchFinalFrame - 1} lancés !" if finalLaunchNumber + 1 != 3 else ""))
+
+                    frame_score.append("X")
+                    counter += 1
+                    print("AJOUT DE COUNTER counter :", counter)
+                    continue  # passe à l'itération suivante pour éviter le finalLaunchNumber+1
+
+                else:
+                    # spare
+                    counter += 1
+                    if (counter == 2):
+                        print("frame_score[counter-2]", frame_score[counter - 2])
+
+                        if (frame_score[0] == "X"):
+                            frame_score.append(skittlesTouched)
+
+                        elif (counter > 1) and (skittlesTouched + frame_score[counter - 2] == 10):
+                            frame_score.append("|")
+                            nbLaunchFinalFrame = 3
                         else:
                             frame_score.append(skittlesTouched)
-                            print(f"\t\t Vous avez encore 1 lancer !")
-
-                    if (e == 2):  # au 2eme lancer vérifie que c'est coherent avec le precedent
-                        skittlesTouched = self.checkCoherentSkittlesLastFrame(skittlesTouched, frame_score, e - 1)
-                        if (skittlesTouched == 10):
-                            frame_score.append('X')
-                            print(f"\t\tVous avez fait un strike au lance 3 de la derniere frame !")
-                        elif (frame_score[e - 1] != "X"):  # cas du spare
-                            if (frame_score[e - 1] + skittlesTouched == 10):  # cas du spare
-                                frame_score.append("|")
-                                print(f"\t\tVous avez fait un spare au lance 3 de la derniere frame !")
-                        else:
-                            frame_score.append(skittlesTouched)
-
-            else:  # 1er lancer de la derniere frame
-                frame_score.append(skittlesTouched)
-                print(f"\tLancer 2:")
-                skittlesTouched = self.askAndCheckSkittlesInTen()
-                if (skittlesTouched + frame_score[0] == 10):  # spare
-                    frame_score.append("|")
-                    print(f"\tLancer 3:")
-                    skittlesTouched = self.askAndCheckSkittlesInTen()
-                    if (skittlesTouched == 10):
-                        frame_score.append("X")
                     else:
                         frame_score.append(skittlesTouched)
-                else:  # cas normal
-                    skittlesTouched = self.checkCoherentSkittles(skittlesTouched, frame_score)
-                    frame_score.append(skittlesTouched)
-                    print(f"\t\tVous n'avez plus de lancers !")
+
+                    finalLaunchNumber += 1
+
+                print("counter FINNNNN", counter)
+                print("frame_score FINNNNN", frame_score)
 
         else:
             for launchNumber in range(nbLaunch):
@@ -102,14 +105,11 @@ class Player:
         self.list_of_party_score.append(frame_score)
 
     def checkCoherentSkittlesLastFrame(parSkittlesTouched, par_frame_score, counter):
-        if par_frame_score[counter] == "X":
-            pass
-        else:
-            while (parSkittlesTouched > 10 - par_frame_score[counter]):
-                print(f"\t\tAu tour précédent vous avez renversé {par_frame_score[counter]} quilles :")
-                parSkittlesTouched = int(input("\t\tVeuillez renseigner un nombre cohérent :"))
+        print("frame_score[counter-1]", par_frame_score[counter])
+        while (parSkittlesTouched > 10 - par_frame_score[counter]):
+            print(f"\t\tAu tour précédent vous avez renversé {par_frame_score[counter-1]} quilles :")
+            parSkittlesTouched = int(input("\t\tVeuillez renseigner un nombre cohérent :"))
         return parSkittlesTouched
-
 
     def checkSkittlesInTen(self):
         skittlesTouched = int(input("\t\tIndiquez le nombre de quilles renversées :"))
@@ -117,13 +117,11 @@ class Player:
             skittlesTouched = int(input("\t\tVeuillez renseigner un nombre entre 0 et 10 :"))
         return skittlesTouched
 
-
     def checkCoherentSkittles(self, parSkittlesTouched, par_frame_score):
         while (parSkittlesTouched > 10 - par_frame_score[0]):
             print(f"\t\tAu tour précédent vous avez renversé {par_frame_score[0]} quilles :")
             parSkittlesTouched = int(input("\t\tVeuillez renseigner un nombre cohérent :"))
         return parSkittlesTouched
-
 
     def checkSpare(self, par_frame_score, parSkittlesTouched):
         if (par_frame_score[0] + parSkittlesTouched == 10):
@@ -131,7 +129,6 @@ class Player:
             par_frame_score.append("|")
         else:
             par_frame_score.append(parSkittlesTouched)
-
 
     # contrary to usual strike check, since we are in the last frame, we keep playing
     def checkStrikeLastFrame(self, par_frame_score, parSkittlesTouched):
@@ -141,10 +138,4 @@ class Player:
         else:
             par_frame_score.append(parSkittlesTouched)
 
-
-    def askAndCheckSkittlesInTen(self):
-        skittlesTouched = int(input("\t\tIndiquez le nombre de quilles renversées :"))
-        while (skittlesTouched > 10 or skittlesTouched < 0):  # Empêche les valeurs incohérentes
-            skittlesTouched = int(input("\t\tVeuillez renseigner un nombre entre 0 et 10 :"))
-        return skittlesTouched
 
