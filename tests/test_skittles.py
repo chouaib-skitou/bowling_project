@@ -22,3 +22,4 @@ def test_check_strike_last_frame():
 @patch('builtins.input', return_value='5')
 def test_check_skittles_in_ten(mock_input):
     assert party.checkSkittlesInTen() == 5
+

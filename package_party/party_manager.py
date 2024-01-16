@@ -1,6 +1,7 @@
 
 
 NUMER_OF_FRAME = 10
+current_frame = 0
 players_list = []
 
 
