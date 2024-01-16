@@ -1,4 +1,5 @@
-import party_manager
+from package_party import party_manager
+
 
 class Player:
     id = 0

@@ -1,21 +1,23 @@
 # tests/test_class_player.py
 
+from package_party import class_player, party_manager
+
 import pytest
-import package_party.class_player
-from package_party.party_manager import add_player, next_player_frame, start_game
+
+
 
 NUMER_OF_FRAME = 10
 
 def test_add_player():
-    player1 = package_party.class_player.Player(1,"David")
-    add_player(player1)
-    assert len(package_party.party_manager.players_list) == 1
-    assert package_party.party_manager.players_list[0].name == "David"
+    player1 = class_player.Player(1,"David")
+    party_manager.add_player(player1)
+    assert len(party_manager.players_list) == 1
+    assert party_manager.players_list[0].name == "David"
 
-    player2 = package_party.class_player.Player(2,"Julien")
-    add_player(player2)
-    assert len(package_party.party_manager.players_list) == 2
-    assert package_party.party_manager.players_list[1].name == "Julien"
+    player2 = class_player.Player(2,"Julien")
+    party_manager.add_player(player2)
+    assert len(party_manager.players_list) == 2
+    assert party_manager.players_list[1].name == "Julien"
 '''
 def test_next_player_frame():
     player1 = package_party.class_player.Player(1,"Hamoudia")
