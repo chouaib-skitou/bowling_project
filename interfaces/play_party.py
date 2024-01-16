@@ -2,7 +2,7 @@ from . import config
 import tkinter
 from tkinter import *
 from tkinter import ttk
-from package_party.party_manager import add_player,next_player_frame,start_game
+from package_party.party_manager import init_Number,add_player,next_player_frame,start_game
 from package_party.class_player import Player
 
 window = config.window

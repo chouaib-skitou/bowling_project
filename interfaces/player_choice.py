@@ -2,7 +2,7 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 from interfaces.players_list import players_list
-from package_party.party_manager import add_player,next_player_frame,start_game
+from package_party.party_manager import init_Number,add_player,next_player_frame,start_game
 from package_party.class_player import Player
 
 def init_window(window):
@@ -22,6 +22,7 @@ def init_window(window):
     def AffichageJoueur(nb_player,nb_tours,nb_bowling):
         nb_player = int(nb_player)
         players_list(nb_player,nb_tours,nb_bowling, window, reinit_player_choice)
+        init_Number(nb_tours,nb_bowling)
 
 
     # Selection of the number of players

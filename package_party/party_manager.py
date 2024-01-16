@@ -1,6 +1,7 @@
-NUMER_OF_FRAME = 10
-NUMBER_OF_SKITLES = 10
-players_list = []
+def init_Number(nb_tours,nb_bowling):
+    NUMER_OF_FRAME = nb_tours
+    NUMBER_OF_SKITLES = nb_bowling
+    players_list = []
 
 
 def add_player(player):
