@@ -9,7 +9,7 @@ def add_player(player):
     players_list.append(player)
 
 
-def create_player(list_players_names):
+def create_players(list_players_names):
     for name in list_players_names:
         player = class_player.Player(len(players_list) + 1, name)
         add_player(player)

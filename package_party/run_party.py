@@ -9,7 +9,7 @@ player2 = class_player.Player(len(party_manager.players_list) + 1, "Elsa la meuf
 party_manager.add_player(player2)
 
 list_players = ["Chouaib", "David le mec absent"]
-party_manager.create_player(list_players)
+party_manager.create_players(list_players)
 
 print("Players list : ")
 for i in range(len(party_manager.players_list)):
