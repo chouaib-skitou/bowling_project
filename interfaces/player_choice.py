@@ -2,8 +2,8 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 from interfaces.players_list import players_list
-from package_party.party_manager import init_Number,add_player,next_player_frame,start_game
-from package_party.class_player import Player
+from package_party.party_manager import *
+from package_party.class_player import *
 
 def init_window(window):
     def hide_player_choice():
@@ -21,8 +21,10 @@ def init_window(window):
 
     def AffichageJoueur(nb_player,nb_tours,nb_bowling):
         nb_player = int(nb_player)
+        party_manager.NUMBER_OF_SKITLES = nb_bowling
+        party_manager.NUMER_OF_FRAME = nb_tours
         players_list(nb_player,nb_tours,nb_bowling, window, reinit_player_choice)
-        init_Number(nb_tours,nb_bowling)
+        
 
 
     # Selection of the number of players

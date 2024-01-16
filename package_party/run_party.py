@@ -1,4 +1,4 @@
-import class_player
+import  class_player
 import party_manager
 
 # Create and add players to the party

@@ -1,9 +1,8 @@
-import class_player
+from package_party import class_player
 
-def init_Number(nb_tours,nb_bowling):
-    NUMER_OF_FRAME = nb_tours
-    NUMBER_OF_SKITLES = nb_bowling
-    players_list = []
+NUMER_OF_FRAME = 0
+NUMBER_OF_SKITLES = 0
+players_list = []
 
 
 def add_player(player):

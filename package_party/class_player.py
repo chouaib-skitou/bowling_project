@@ -1,4 +1,4 @@
-from package_party.party_manager import init_Number,add_player,next_player_frame,start_game
+from package_party import party_manager
 
 class Player:
     id = 0
