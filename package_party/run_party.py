@@ -1,6 +1,7 @@
 import class_player
 import party_manager
 
+
 # Create and add players to the party
 player1 = class_player.Player(len(party_manager.players_list) + 1, "Hamoudia", 4, 10)
 party_manager.add_player(player1)
@@ -14,3 +15,7 @@ for i in range(len(party_manager.players_list)):
           " name : ", party_manager.players_list[i].name)
 
 party_manager.start_game()
+
+
+for e in party_manager.players_list:
+    print(e.calculateScore(e.list_of_party_score))

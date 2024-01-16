@@ -145,20 +145,20 @@ class Player:
             skittlesTouched = int(input("\t\tVeuillez renseigner un nombre entre 0 et 10 :"))
         return skittlesTouched
 
-    """
-        def scoreCalculation(self):
+    def calculateScore(frame_score_list):
+        currentScore = 0
         # CALCUL DU SCORE
-        for indexCurrentFrame in range(len(self.list_of_party_score)):
-            currentFrame = self.list_of_party_score[indexCurrentFrame]  # liste de score de la frame courante
+        for indexCurrentFrame in range(len(frame_score_list)):
+            currentFrame = frame_score_list[indexCurrentFrame]  # liste de score de la frame courante
             # AVANT DERNIERE FRAME
-            if (indexCurrentFrame == len(self.list_of_party_score) - 2):
-                if ("X" == self.list_of_party_score[indexCurrentFrame][0]):  # STRIKE DANS L'AVANT DERNIER FRAME
-                    if ("X" == self.list_of_party_score[indexCurrentFrame + 1][0] and "X" ==
-                            self.list_of_party_score[indexCurrentFrame + 1][
+            if (indexCurrentFrame == len(frame_score_list) - 2):
+                if ("X" == frame_score_list[indexCurrentFrame][0]):  # STRIKE DANS L'AVANT DERNIER FRAME
+                    if ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" ==
+                            frame_score_list[indexCurrentFrame + 1][
                                 1]):  # avant derniere frame : Si Strike dans les 2 lancers suivants
                         currentScore += 30
                         print("avant dernier : Strike + 2 strikes")
-                    elif ("X" == self.list_of_party_score[indexCurrentFrame + 1][0] and "X" !=
+                    elif ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" !=
                           frame_score_list[indexCurrentFrame + 1][
                               1]):  # avant derniere frame : Si un strike et un tir normal
                         currentScore += 20 + frame_score_list[indexCurrentFrame + 1][1]
@@ -253,6 +253,8 @@ class Player:
                 else:
                     currentScore += sum(frame_score_list[indexCurrentFrame])
 
-        print("frame_score_list", frame_score_list)
-        print("currentScore : ", currentScore)
-        """
+        return currentScore
+
+
+
+
