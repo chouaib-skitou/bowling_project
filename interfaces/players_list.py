@@ -1,9 +1,11 @@
 import tkinter
 from interfaces.play_party import play_party
+from package_party.party_manager import *
+from package_party.class_player import *
 from tkinter import *
 from tkinter import ttk
 
-def players_list(count, window, callback):
+def players_list(count,nb_tours,nb_bowling, window, callback):
     def show_player_choice():
         for widget in frame.winfo_children():
             widget.destroy()
@@ -22,7 +24,9 @@ def players_list(count, window, callback):
     def call_play_party(entries,window):
         for i, entry in enumerate(entries):
             print(f"Player {i + 1}: {entry.get()}")
-        play_party(entries,window)
+        create_player(entries) # création de chaque objet Player
+        print(party_manager.players_list)
+        play_party(entries,nb_tours,nb_bowling,window)
 
     # Centering the widgets in the window
     frame = ttk.Frame(window)
@@ -34,6 +38,7 @@ def players_list(count, window, callback):
         entry = ttk.Entry(frame, width=20)
         entry.grid(row=i, column=1, padx=10, pady=10)
         entries.append(entry)
+    
 
     btnValidate = ttk.Button(frame, text="Validate", width=20, command=lambda: [hide_player_list(),call_play_party(entries,window)])
     btnValidate.grid(row=count, column=0, columnspan=2, pady=10)
