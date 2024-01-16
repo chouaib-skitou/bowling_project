@@ -46,3 +46,5 @@ def test_start_game():
     for player in package_party.party_manager.players_list:
         assert player.current_turn == NUMER_OF_FRAME
 '''
+
+test_add_player()
