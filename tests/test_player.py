@@ -1,8 +1,6 @@
-# tests/test_class_player.py
-
-import pytest
 import package_party.class_player
-from package_party.party_manager import add_player, next_player_frame, start_game
+import package_party.party_manager
+from package_party.party_manager import *
 
 NUMER_OF_FRAME = 10
 
@@ -44,3 +42,5 @@ def test_start_game():
     for player in package_party.party_manager.players_list:
         assert player.current_turn == NUMER_OF_FRAME
 '''
+
+test_add_player()

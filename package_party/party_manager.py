@@ -1,7 +1,6 @@
-NUMER_OF_FRAME = 0
 import class_player
 
-
+NUMER_OF_FRAME = 0
 NUMBER_OF_SKITLES = 0
 players_list = []
 
@@ -10,9 +9,9 @@ def add_player(player):
     players_list.append(player)
 
 
-def create_player(list_players_names):
-    for i in range(list_players_names):
-        player = class_player.Player(len(players_list) + 1, list_players_names(i))
+def create_players(list_players_names):
+    for name in list_players_names:
+        player = class_player.Player(len(players_list) + 1, name)
         add_player(player)
 
 
