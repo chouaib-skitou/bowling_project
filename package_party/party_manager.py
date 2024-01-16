@@ -1,6 +1,5 @@
-
-
 NUMER_OF_FRAME = 10
+NUMBER_OF_SKITLES = 10
 players_list = []
 
 
