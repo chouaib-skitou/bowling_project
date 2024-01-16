@@ -3,11 +3,11 @@ import party_manager
 
 
 # Create and add players to the party
-player1 = class_player.Player(len(party_manager.players_list) + 1, "Hamoudia", 4, 10)
+player1 = class_player.Player(len(party_manager.players_list) + 1, "Hamoudia")
 party_manager.add_player(player1)
 
-player2 = class_player.Player(len(party_manager.players_list) + 1, "Elsa la meuf d'Hamoudia", 4, 10)
-party_manager.add_player(player2)
+player2 = class_player.Player(len(party_manager.players_list) + 1, "Elsa la meuf d'Hamoudia")
+#party_manager.add_player(player2)
 
 print("Players list : ")
 for i in range(len(party_manager.players_list)):
