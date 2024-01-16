@@ -9,9 +9,9 @@ def add_player(player):
     players_list.append(player)
 
 
-def create_players(list_players_names):
-    for name in list_players_names:
-        player = class_player.Player(len(players_list) + 1, name)
+def create_player(list_players_names):
+    for i in enumerate(list_players_names):
+        player = class_player.Player(len(players_list) + 1, list_players_names(i))
         add_player(player)
 
 

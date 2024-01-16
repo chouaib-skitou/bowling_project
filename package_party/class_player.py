@@ -1,6 +1,5 @@
 from package_party import party_manager
 
-
 class Player:
     id = 0
     name = ""
