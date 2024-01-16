@@ -41,5 +41,5 @@ def play_party(entries, nb_tours, nb_bowling, window):
     lbl_Score_Value.grid(row=3, column=2, padx=10, pady=10)
 
     # Validation
-    btnValider = Button(frame, text="Valider", command=lambda: [])
+    btnValider = Button(frame, text="Valider", command=lambda: [play_game()])
     btnValider.grid(row=4, column=1, columnspan=2, padx=10, pady=10)

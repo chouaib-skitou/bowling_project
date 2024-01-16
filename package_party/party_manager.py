@@ -1,3 +1,5 @@
+import class_player
+
 def init_Number(nb_tours,nb_bowling):
     NUMER_OF_FRAME = nb_tours
     NUMBER_OF_SKITLES = nb_bowling
@@ -7,6 +9,11 @@ def init_Number(nb_tours,nb_bowling):
 def add_player(player):
     players_list.append(player)
 
+
+def create_player(list_players_names):
+    for i in enumerate(list_players_names):
+        player = class_player.Player(len(players_list) + 1, list_players_names(i))
+        add_player(player)
 
 
 def next_player_frame(player_id, current_frame):
