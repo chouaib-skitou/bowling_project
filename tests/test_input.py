@@ -1,6 +1,6 @@
 
-from bowling_project.bowling_logic.bowling_logic import askAndCheckSkittlesInTen,checkCoherentSkittles
-from bowling_project.bowling_logic import bowling
+from bowling_logic.bowling_logic import askAndCheckSkittlesInTen,checkCoherentSkittles
+from bowling_logic import bowling
 import pytest
 
 '''

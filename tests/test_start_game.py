@@ -1,4 +1,4 @@
-from bowling_project.package_party import party_manager,class_player
+from package_party import party_manager,class_player
 
 def test_start_game():
     player1 = class_player.Player(1, "David")

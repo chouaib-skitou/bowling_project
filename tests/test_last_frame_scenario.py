@@ -1,5 +1,5 @@
 import pytest
-from bowling_project.bowling_logic import bowling  # Remplacez par le chemin correct de votre classe
+from bowling_logic import bowling  # Remplacez par le chemin correct de votre classe
 
 def test_last_frame_scenarios():
     # Test pour la dernière frame avec un strike

@@ -1,5 +1,5 @@
 import pytest
-from bowling_project.bowling_logic import bowling
+from bowling_logic import bowling
 
 def test_normal_game():
     game = bowling.BowlingGame()

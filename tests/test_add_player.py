@@ -1,6 +1,6 @@
 # tests/test_class_player.py
 
-from bowling_project.package_party import class_player, party_manager
+from package_party import class_player, party_manager
 
 
 # Cas de test : ajouter un joueur
