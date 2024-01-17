@@ -27,7 +27,7 @@ def players(count,nb_tours,nb_skittles, window, callback):
         create_player(entries) # création de chaque objet Player
         #Affichage des joueurs
         for joueur in players_list:
-            print(joueur)
+            joueur
         play_party(entries,nb_tours,nb_skittles,window)
 
     # Centering the widgets in the window
