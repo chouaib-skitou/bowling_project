@@ -1,9 +1,9 @@
 import pytest
-from bowling_game import BowlingGame  # Remplacez par le chemin correct de votre classe
+from bowling_project.bowling_logic import bowling  # Remplacez par le chemin correct de votre classe
 
 def test_last_frame_scenarios():
     # Test pour la dernière frame avec un strike
-    game_strike = BowlingGame()
+    game_strike = bowling.BowlingGame()
     for _ in range(9):  # Premières 9 frames
         game_strike.roll(0)
         game_strike.roll(0)
@@ -13,7 +13,7 @@ def test_last_frame_scenarios():
     score_strike = game_strike.score()
 
     # Test pour la dernière frame avec un spare
-    game_spare = BowlingGame()
+    game_spare = bowling.BowlingGame()
     for _ in range(9):  # Premières 9 frames
         game_spare.roll(0)
         game_spare.roll(0)
@@ -23,7 +23,7 @@ def test_last_frame_scenarios():
     score_spare = game_spare.score()
 
     # Test pour la dernière frame sans strike ni spare
-    game_normal = BowlingGame()
+    game_normal = bowling.BowlingGame()
     for _ in range(9):  # Premières 9 frames
         game_normal.roll(0)
         game_normal.roll(0)
