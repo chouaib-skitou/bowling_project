@@ -10,8 +10,8 @@ def add_player(player):
 
 
 def create_player(list_players_names):
-    for i in enumerate(list_players_names):
-        player = class_player.Player(len(players_list) + 1, list_players_names(i))
+    for names in enumerate(list_players_names):
+        player = class_player.Player(len(players_list) + 1, names)
         add_player(player)
 
 

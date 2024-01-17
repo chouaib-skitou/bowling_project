@@ -1,9 +1,9 @@
 import tkinter
 from tkinter import *
 from tkinter import ttk
-from interfaces.players_list import players_list
-#from package_party.party_manager import *
-#from package_party.class_player import *
+from interfaces.players_list import players
+from package_party.party_manager import *
+from package_party.class_player import *
 
 def init_window(window):
     def hide_player_choice():
@@ -22,9 +22,9 @@ def init_window(window):
     def AffichageJoueur(nb_player,nb_tours,nb_skittles):
         nb_player = int(nb_player)
         
-        #party_manager.NUMBER_OF_SKITLES = nb_skittles
-        #party_manager.NUMER_OF_FRAME = nb_tours
-        players_list(nb_player,nb_tours,nb_skittles, window, reinit_player_choice)
+        party_manager.NUMBER_OF_SKITLES = nb_skittles
+        party_manager.NUMER_OF_FRAME = nb_tours
+        players(nb_player,nb_tours,nb_skittles, window, reinit_player_choice)
         
 
 
