@@ -5,7 +5,7 @@ from package_party.class_player import *
 from tkinter import *
 from tkinter import ttk
 
-def players_list(count,nb_tours,nb_bowling, window, callback):
+def players_list(count,nb_tours,nb_skittles, window, callback):
     def show_player_choice():
         for widget in frame.winfo_children():
             widget.destroy()
@@ -24,9 +24,9 @@ def players_list(count,nb_tours,nb_bowling, window, callback):
     def call_play_party(entries,window):
         for i, entry in enumerate(entries):
             print(f"Player {i + 1}: {entry.get()}")
-        create_player(entries) # création de chaque objet Player
-        print(party_manager.players_list)
-        play_party(entries,nb_tours,nb_bowling,window)
+        #create_player(entries) # création de chaque objet Player
+        #print(party_manager.players_list)
+        play_party(entries,nb_tours,nb_skittles,window)
 
     # Centering the widgets in the window
     frame = ttk.Frame(window)
