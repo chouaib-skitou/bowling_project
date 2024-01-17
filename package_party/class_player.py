@@ -10,7 +10,6 @@ class Player:
         self.name = name
         self.list_of_party_score = []
         self.current_frame = 0
-        self.total_score = 0
 
 
     # The function to call at the start of player's frame

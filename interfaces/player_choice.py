@@ -55,5 +55,5 @@ def init_window(window):
     combo_number_skittles.current(0)
     combo_number_skittles.pack()
 
-    btnValider = Button(window, text="skittles score manager ultimate", command=lambda: [hide_player_choice(), AffichageJoueur(combo_number_player.get(),combo_number_tours.get(),combo_number_skittles.get())])
+    btnValider = Button(window, text="Bowling score manager ultimate", command=lambda: [hide_player_choice(), AffichageJoueur(combo_number_player.get(),combo_number_tours.get(),combo_number_skittles.get())])
     btnValider.pack()

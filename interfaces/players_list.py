@@ -24,11 +24,14 @@ def players(count,nb_tours,nb_skittles, window, callback):
     def call_play_party(entries,window):
         for i, entry in enumerate(entries):
             print(f"Player {i + 1}: {entry.get()}")
-        create_player(entries) # création de chaque objet Player
+            create_player(entry.get()) # création de chaque objet Player
         #Affichage des joueurs
-        for joueur in players_list:
-            joueur
-        play_party(entries,nb_tours,nb_skittles,window)
+        #indice du premier joueur
+        current_player_indice =0
+        for joueur in party_manager.players_list:
+            print(joueur.name)
+            print(len(party_manager.players_list))
+        play_party(entries,nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)
 
     # Centering the widgets in the window
     frame = ttk.Frame(window)
