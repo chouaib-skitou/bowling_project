@@ -31,8 +31,7 @@ class Player:
             print("Derniere frame !")
             finalLaunchNumber = 0  # determine le nombre de lance effectue dans la derniere frame
             counter = 0
-            while (
-                    finalLaunchNumber < nbLaunchFinalFrame):  # Droit a 3 lances si strike ou spare -> 1 lance supplementaire
+            while (finalLaunchNumber < nbLaunchFinalFrame):  # Droit a 3 lances si strike ou spare -> 1 lance supplementaire
                 if ((len(frame_score) == 2) and ("X" not in frame_score) and (
                         "|" not in frame_score)):  # cas où on a fait ni strike ni spare
                     finalLaunchNumber += 1
