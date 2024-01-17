@@ -10,9 +10,8 @@ def add_player(player):
 
 
 def create_player(list_players_names):
-    for names in enumerate(list_players_names):
-        player = class_player.Player(len(players_list) + 1, names)
-        add_player(player)
+    for name in enumerate(list_players_names):
+        add_player(class_player.Player(len(players_list) + 1, name[1]))
 
 
 def next_player_frame(player_id, current_frame):
@@ -25,6 +24,4 @@ def start_game():
     for i in range(NUMER_OF_FRAME):
         for j in range(len(players_list)):
             next_player_frame(j, i)
-
-
 
