@@ -15,12 +15,13 @@ def clear_frame(frame):
 
 #Passe au joueur suivant, pour le moment changement à chaque lancer au lieu de laisser 2 lancer pour chaque joueur
 def change_player(entries, nb_tours, nb_skittles, window,current_player_indice):
-    if current_player_indice == len(party_manager.players_list)-1:#si on atteint le dernier joueur de la liste, on reprends au début
+    if current_player_indice == len(party_manager.players_list)-1:#si on atteint le dernier joueur de la liste, on reprends au début, et un tours est passé
         current_player_indice = -1
+        nb_tours = nb_tours - 1
     if nb_tours == 0:
         clear_frame(window)
         return window_score(window)
-    play_party(entries,nb_tours-1,nb_skittles,window,party_manager.players_list[current_player_indice+1],current_player_indice+1)
+    play_party(entries,nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice+1],current_player_indice+1)
 
 #mise à jour des Score, pour le moment il ne marche que pour un lancer
 def majScore(nb_skittles_fallen,current_player_indice):
