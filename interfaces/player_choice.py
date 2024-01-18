@@ -34,7 +34,7 @@ def init_window(window):
 
     list_of_number_player = [1, 2, 3, 4]
     combo_number_player = ttk.Combobox(window, values=list_of_number_player, state="readonly")
-    combo_number_player.current(0)
+    combo_number_player.current(1)
     combo_number_player.pack()
 
     # Selection of the number of frame
