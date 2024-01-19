@@ -31,26 +31,28 @@ class Player:
         #print("frameNumber (real number before incrementation) : ", current_frame)
         if (current_frame == party_manager.NUMBER_OF_FRAME - 1):  # LA DERNIERE FRAME
             print("Derniere frame !")
-            print(f"\tLancer 1:")
+            print(f"\tLancé 1:")
             skittlesTouched = self.askAndCheckSkittlesInTen()  # demande nombre de quilles renversées
 
-            if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):  # 1er lancer de la derniere frame
+            if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):  # Strike au 1er lancé de la derniere frame
                 frame_score.append('X')
-                print(f"\t\tVous avez fait un strike au lance 1 de la derniere frame ! Vous avez encore 2 lancer !")
+                print(f"\t\tVous avez fait un strike au lancé 1 de la derniere frame ! Vous avez encore 2 lancé !")
 
-                for e in range(1, 3):  # De 1 à 3 pour garder la continuité des lancers (lancers 2 et 3)
-                    print(f"\tLancer {e + 1} :")
+                for e in range(1, 3):  # De 1 à 3 pour garder la continuité des lancés (lancé 2 et 3)
+                    print("for e :", e)
+                    print(f"\tLancé {e + 1} :")
                     skittlesTouched = self.askAndCheckSkittlesInTen()
                     if (e == 1):
-                        if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):
+                        print("Lancé 222222")
+                        if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):#Si Strike
                             frame_score.append('X')
-                            print(
-                                f"\t\tVous avez fait un strike au lance 2 de la derniere frame ! Vous avez encore 1 lancer !")
+                            print(f"\t\tVous avez fait un strike au lance 2 de la derniere frame ! Vous avez encore 1 lancé !")
                         else:
                             frame_score.append(skittlesTouched)
-                            print(f"\t\t Vous avez encore 1 lancer !")
+                            print(f"\t\t Vous avez encore 1 lancé !")
 
-                    if (e == 2):  # au 2eme lancer vérifie que c'est coherent avec le precedent
+                    if (e == 2):  # au 3eme lancé vérifie que c'est coherent avec le precedent
+                        print("Dernier lancé 3")
                         skittlesTouched = self.checkCoherentSkittlesLastFrame(skittlesTouched, frame_score, e - 1)
                         if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):
                             frame_score.append('X')
@@ -60,15 +62,16 @@ class Player:
                                 frame_score.append("|")
                                 print(f"\t\tVous avez fait un spare au lance 3 de la derniere frame !")
                         else:
+                            print("Condition 3: Encore 1 lancé")
                             frame_score.append(skittlesTouched)
 
-            else:  # 1er lancer de la derniere frame
+            else:  # 1er lancé de la derniere frame
                 frame_score.append(skittlesTouched)
-                print(f"\tLancer 2:")
+                print(f"\tLancé 2:")
                 skittlesTouched = self.askAndCheckSkittlesInTen()
                 if (skittlesTouched + frame_score[0] == party_manager.NUMBER_OF_SKITTLES):  # spare
                     frame_score.append("|")
-                    print(f"\tLancer 3:")
+                    print(f"\tLancé 3:")
                     skittlesTouched = self.askAndCheckSkittlesInTen()
                     if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):
                         frame_score.append("X")
@@ -77,7 +80,7 @@ class Player:
                 else:  # cas normal
                     skittlesTouched = self.checkCoherentSkittles(skittlesTouched, frame_score)
                     frame_score.append(skittlesTouched)
-                    print(f"\t\tVous n'avez plus de lancers !")
+                    print(f"\t\tVous n'avez plus de lancé !")
 
         else:
             for launchNumber in range(nbLaunch):
@@ -148,27 +151,22 @@ class Player:
         currentScore = 0
         # CALCUL DU SCORE
         for indexCurrentFrame in range(len(frame_score_list)):
-            currentFrame = frame_score_list[indexCurrentFrame]  # liste de score de la frame courante
+            currentFrame = frame_score_list[indexCurrentFrame]  #liste de score de la frame courante
             # AVANT DERNIERE FRAME
             if (indexCurrentFrame == len(frame_score_list) - 2):
-                if ("X" == frame_score_list[indexCurrentFrame][0]):  # STRIKE DANS L'AVANT DERNIER FRAME
-                    if ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" ==
-                            frame_score_list[indexCurrentFrame + 1][
-                                1]):  # avant derniere frame : Si Strike dans les 2 lancers suivants
-                        currentScore += 30
+                print("AVANT DERNIERE FRAME")
+                if ("X" == frame_score_list[indexCurrentFrame][0]):  #STRIKE DANS L'AVANT DERNIER FRAME
+                    if ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" == frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : Si Strike dans les 2 lancés suivants
+                        currentScore += party_manager.NUMBER_OF_SKITTLES * 3 #On prend en compte les 2 strike suivants donc *3
                         print("avant dernier : Strike + 2 strikes")
-                    elif ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" !=
-                          frame_score_list[indexCurrentFrame + 1][
-                              1]):  # avant derniere frame : Si un strike et un tir normal
-                        currentScore += 20 + frame_score_list[indexCurrentFrame + 1][1]
+                    elif ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" !=frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : Si un strike et un tir normal
+                        currentScore += (party_manager.NUMBER_OF_SKITTLES * 2) + frame_score_list[indexCurrentFrame + 1][1]
                         print("avant dernier : Strike + strike et tir normal")
                     elif ("|" == frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : Si Spare
                         currentScore += 20
                         print("avant dernier : Strike + 2 strikes")
                     else:
-                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0] + \
-                                        frame_score_list[indexCurrentFrame + 1][
-                                            1]  # avant derniere frame : Si 2 tirs normaux
+                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0] + frame_score_list[indexCurrentFrame + 1][1]  # avant derniere frame : Si 2 tirs normaux
                         print("avant dernier : 2 tirs normaux")
 
                 elif ("|" == frame_score_list[indexCurrentFrame][1]):  # SPARE DANS L'AVANT DERNIERE FRAME
@@ -185,22 +183,21 @@ class Player:
 
             # DERNIERE FRAME
             elif (indexCurrentFrame == len(frame_score_list) - 1):
+                print("frame_score_list :",frame_score_list)
+                print("frame_score_list[indexCurrentFrame]", frame_score_list[indexCurrentFrame])
                 if ("X" == frame_score_list[indexCurrentFrame][0]):  # STRIKE DANS LA DERNIERE FRAME
-                    if ("X" == frame_score_list[indexCurrentFrame][1] and "X" == frame_score_list[indexCurrentFrame][
-                        2]):  # derniere frame : Si Strike dans les 2 lancers suivants
-                        currentScore += 30
+                    if ("X" == frame_score_list[indexCurrentFrame][1] and "X" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si Strike dans les 2 lancés suivants
+                        currentScore += party_manager.NUMBER_OF_SKITTLES * 3
                         print("dernier : Strike + 2 strikes")
-                    elif ("X" == frame_score_list[indexCurrentFrame][1] and "X" != frame_score_list[indexCurrentFrame][
-                        2]):  # derniere frame : Si Strike puis normal dans les 2 lancers suivants
+                    elif ("X" == frame_score_list[indexCurrentFrame][1] and "X" != frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si Strike puis normal dans les 2 lancés suivants
                         currentScore += 20 + frame_score_list[indexCurrentFrame][2]
                         print("dernier : Strike + strikes et tir normal")
                     elif ("|" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si un spare
-                        print("frame_score_list !!!!", frame_score_list)
+                        print("frame_score_list !!!!", frame_score_list) #ERREUR
                         currentScore += 20
                         print("dernier : Strike + spare")
                     else:  # derniere frame : Si 2 tirs normaux
-                        currentScore += 10 + frame_score_list[indexCurrentFrame][1] + \
-                                        frame_score_list[indexCurrentFrame][2]
+                        currentScore += 10 + frame_score_list[indexCurrentFrame][1] + frame_score_list[indexCurrentFrame][2]
                         print("dernier : Strike + 2 tirs normaux")
                 elif ("|" == frame_score_list[indexCurrentFrame][1]):  # SPARE DANS LA DERNIERE FRAME
                     if ("X" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si spare
@@ -219,8 +216,7 @@ class Player:
                     if indexCurrentFrame + 2 > len(frame_score_list) - 1:  # pour eviter les dépassements
                         print('Fin')
                     else:
-                        if ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" ==
-                                frame_score_list[indexCurrentFrame + 2][0]):  # Si Strike dans les 2 lancers suivants
+                        if ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" == frame_score_list[indexCurrentFrame + 2][0]):  # Si Strike dans les 2 lancés suivants
                             currentScore += 30  # car 3 strikes daffilés
                             print("Strike + 2 strike donc +30")
 
@@ -235,8 +231,7 @@ class Player:
                             print("Strike + normal")
 
                         else:  # Si 2 tirs normaux
-                            currentScore += 10 + sum(frame_score_list[
-                                                         indexCurrentFrame + 1])  # 10 plus le score de la frame suivante constituée de 2 lancers
+                            currentScore += 10 + sum(frame_score_list[indexCurrentFrame + 1])  # 10 plus le score de la frame suivante constituée de 2 lancés
                             print("Strike + 2 tirs normaux")
 
                 elif ("|" == frame_score_list[indexCurrentFrame][1]):
@@ -252,7 +247,7 @@ class Player:
 
                 else:
                     currentScore += sum(frame_score_list[indexCurrentFrame])
-
+        print("frame_score_list :", frame_score_list)
         return currentScore
 
 
