@@ -11,6 +11,7 @@ from package_party.class_player import *
 def tous_egaux(liste):
     return all(element == liste[0] for element in liste)
 
+
 def window_score(window):
     # Create a frame to hold the widgets
     frame = ttk.Frame(window)
