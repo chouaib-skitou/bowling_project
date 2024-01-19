@@ -40,13 +40,51 @@ def test_add_scores_to_player():
 
     player.add_scores_to_frame(10, 0)
     player.add_scores_to_frame(7, 3)
+    player.add_scores_to_frame(7, 2)
+    player.add_scores_to_frame(10, 10, 10)
+    player.add_scores_to_frame(10, 5, 2)
+    player.add_scores_to_frame(8, 2, 5)
+    player.add_scores_to_frame(8, 2, 10)
+    player.add_scores_to_frame(10, 3, 7)
+    player.add_scores_to_frame(10, 10, 4)
+    player.add_scores_to_frame(10, 3, 4)
 
-    assert (player.list_of_party_score[0][0] == "X")
-    assert (player.list_of_party_score[0][1] == 0)
+    assert(player.list_of_party_score[0][0] == "X")
+    assert(player.list_of_party_score[0][1] == "")
 
     assert(player.list_of_party_score[1][0] == 7)
     assert(player.list_of_party_score[1][1] == "|")
 
+    assert(player.list_of_party_score[2][0] == 7)
+    assert(player.list_of_party_score[2][1] == 2)
+
+    assert(player.list_of_party_score[3][0] == "X")
+    assert(player.list_of_party_score[3][1] == "X")
+    assert(player.list_of_party_score[3][2] == "X")
+
+    assert(player.list_of_party_score[4][0] == "X")
+    assert(player.list_of_party_score[4][1] == 5)
+    assert(player.list_of_party_score[4][2] == 2)
+
+    assert(player.list_of_party_score[5][0] == 8)
+    assert(player.list_of_party_score[5][1] == "|")
+    assert(player.list_of_party_score[5][2] == 5)
+
+    assert(player.list_of_party_score[6][0] == 8)
+    assert(player.list_of_party_score[6][1] == "|")
+    assert(player.list_of_party_score[6][2] == "X")
+
+    assert(player.list_of_party_score[7][0] == "X")
+    assert(player.list_of_party_score[7][1] == 3)
+    assert(player.list_of_party_score[7][2] == "|")
+
+    assert(player.list_of_party_score[8][0] == "X")
+    assert(player.list_of_party_score[8][1] == "X")
+    assert(player.list_of_party_score[8][2] == 4)
+
+    assert(player.list_of_party_score[9][0] == "X")
+    assert(player.list_of_party_score[9][1] == 3)
+    assert(player.list_of_party_score[9][2] == 4)
 
 '''
 def test_next_player_frame():
