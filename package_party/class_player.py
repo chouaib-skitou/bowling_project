@@ -10,7 +10,33 @@ class Player:
         self.id = id
         self.name = name
         self.list_of_party_score = []
-        self.current_frame = 0
+        self.num_current_frame = 0
+
+
+    def add_scores_to_frame(self, score_launch_1, score_launch_2, score_launch_3 = -1):
+        if score_launch_1 == party_manager.NUMBER_OF_SKITTLES:
+            self.list_of_party_score[self.num_current_frame][0] = "X"
+        else:
+            self.list_of_party_score[self.num_current_frame][0] = score_launch_1
+
+        if (score_launch_1 + score_launch_2) == party_manager.NUMBER_OF_SKITTLES:
+            self.list_of_party_score[self.num_current_frame][1] = "|"
+        else:
+            self.list_of_party_score[self.num_current_frame][1] = score_launch_2
+
+        if 0 <= score_launch_3 <= 10:
+            if score_launch_3 == party_manager.NUMBER_OF_SKITTLES:
+                self.list_of_party_score[self.num_current_frame][2] = "X"
+            elif self.list_of_party_score[self.num_current_frame][1] != "X" \
+                 and self.list_of_party_score[self.num_current_frame][2] != "|":
+                self.list_of_party_score[self.num_current_frame][2] = score_launch_3
+            else:
+                if (score_launch_2 + score_launch_3) == party_manager.NUMBER_OF_SKITTLES:
+                    self.list_of_party_score[self.num_current_frame][2] = "|"
+                else:
+                    self.list_of_party_score[self.num_current_frame][2] = score_launch_3
+                    
+        self.num_current_frame += 1
 
 
     # The function to call at the start of player's frame
