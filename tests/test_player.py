@@ -16,13 +16,25 @@ def test_add_player():
     player1 = class_player.Player(1,"David")
     party_manager.add_player(player1)
     assert len(party_manager.players_list) == 1
-    print(party_manager.players_list[0].name)
     assert party_manager.players_list[0].name == "David"
 
     player2 = class_player.Player(2,"Julien")
     party_manager.add_player(player2)
     assert len(party_manager.players_list) == 2
     assert party_manager.players_list[1].name == "Julien"
+
+# Test sur la fonction permettant d'ajouter des joueurs à la partie depuis une liste de nom
+def test_create_player():
+    names = "Joueur1"
+    party_manager.create_player(names)
+    party_manager.create_player("Joueur2")
+
+    assert len(party_manager.players_list) == 2
+    assert party_manager.players_list[0].name == "Joueur1"
+    assert party_manager.players_list[1].name == "Joueur2"
+
+
+
 '''
 def test_next_player_frame():
     player1 = package_party.class_player.Player(1,"Hamoudia")
@@ -51,5 +63,3 @@ def test_start_game():
     for player in package_party.party_manager.players_list:
         assert player.current_turn == NUMER_OF_FRAME
 '''
-
-test_add_player()
