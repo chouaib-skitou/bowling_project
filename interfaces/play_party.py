@@ -32,7 +32,7 @@ def majScore(nb_skittles_fallen,current_player_indice):
 #on vérifie les valeurs de quilles tombées entrés dans le formulaire 
 def verfi_values_void(first,second):
     if((first == "" and second == "") or (first == "") or (second == "")):
-        return messagebox.showerror('Erreur ', " Veuillez renseigner des valeurs !!!")
+        return messagebox.showerror('Erreur ', " Veuillez renseigner toutes les valeurs !!! ")
 
 
 def play_party(nb_tours, nb_skittles, window,current_player,current_player_indice):

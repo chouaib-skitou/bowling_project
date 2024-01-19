@@ -17,6 +17,8 @@ class Player:
         if score_launch_1 == party_manager.NUMBER_OF_SKITTLES:
             self.list_of_party_score[self.num_current_frame][0] = "X"
         else:
+            print(len(self.list_of_party_score))
+            print(self.num_current_frame)
             self.list_of_party_score[self.num_current_frame][0] = score_launch_1
 
         if (score_launch_1 + score_launch_2) == party_manager.NUMBER_OF_SKITTLES:
