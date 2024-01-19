@@ -14,30 +14,37 @@ class Player:
 
 
     def add_scores_to_frame(self, score_launch_1, score_launch_2, score_launch_3 = -1):
-        if score_launch_1 == party_manager.NUMBER_OF_SKITTLES:
-            self.list_of_party_score[self.num_current_frame][0] = "X"
-        else:
-            print(len(self.list_of_party_score))
-            print(self.num_current_frame)
-            self.list_of_party_score[self.num_current_frame][0] = score_launch_1
+        score_to_add3 = -1
 
-        if (score_launch_1 + score_launch_2) == party_manager.NUMBER_OF_SKITTLES:
-            self.list_of_party_score[self.num_current_frame][1] = "|"
+        # First launch
+        if score_launch_1 == party_manager.NUMBER_OF_SKITTLES:
+            score_to_add1 = "X"
         else:
-            self.list_of_party_score[self.num_current_frame][1] = score_launch_2
+            score_to_add1 = score_launch_1
+
+        # Second launch
+        if (score_launch_1 + score_launch_2) == party_manager.NUMBER_OF_SKITTLES \
+            and score_to_add1 != "X":
+            score_to_add2 = "|"
+        else:
+            score_to_add2 = score_launch_2
 
         if 0 <= score_launch_3 <= 10:
             if score_launch_3 == party_manager.NUMBER_OF_SKITTLES:
-                self.list_of_party_score[self.num_current_frame][2] = "X"
-            elif self.list_of_party_score[self.num_current_frame][1] != "X" \
-                 and self.list_of_party_score[self.num_current_frame][2] != "|":
-                self.list_of_party_score[self.num_current_frame][2] = score_launch_3
+                score_to_add3 = "X"
+            elif score_to_add2 != "X" and score_to_add2 != "|":
+                score_to_add3 = score_launch_3
             else:
                 if (score_launch_2 + score_launch_3) == party_manager.NUMBER_OF_SKITTLES:
-                    self.list_of_party_score[self.num_current_frame][2] = "|"
+                    score_to_add3 = "|"
                 else:
-                    self.list_of_party_score[self.num_current_frame][2] = score_launch_3
-                    
+                    score_to_add3 = score_launch_3
+
+        if score_to_add3 != -1:
+            self.list_of_party_score.append([score_to_add1, score_to_add2, score_to_add3])
+        else:
+            self.list_of_party_score.append([score_to_add1, score_to_add2])
+
         self.num_current_frame += 1
 
 
