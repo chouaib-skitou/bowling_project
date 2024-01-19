@@ -1,8 +1,7 @@
 from package_party import class_player
 
-NUMBER_OF_FRAME = 3
-NUMBER_OF_SKITTLES = 9
-
+NUMBER_OF_FRAME = 0
+NUMBER_OF_SKITTLES = 0
 players_list = []
 
 
@@ -10,9 +9,8 @@ def add_player(player):
     players_list.append(player)
 
 
-def create_player(list_players_names):
-    for name in enumerate(list_players_names):
-        add_player(class_player.Player(len(players_list) + 1, name[1]))
+def create_player(player_name):
+    add_player(class_player.Player(len(players_list) + 1, player_name))
 
 
 def next_player_frame(player_id, current_frame):
