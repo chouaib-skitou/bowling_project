@@ -12,7 +12,7 @@ def players(count,nb_tours,nb_skittles, window, callback):
         # Vérification si l'un des Entry est vide
         for entry in entries:
             if entry.get() == "":
-                return messagebox.showerror('Erreur ', "\t\tVeuillez renseigner un nombre nom de joueur !")
+                return messagebox.showerror('Erreur ', " Veuillez renseigner nom de joueur !")
         hide_player_list()
         call_play_party(entries,window)
 
@@ -41,7 +41,7 @@ def players(count,nb_tours,nb_skittles, window, callback):
         for joueur in party_manager.players_list:
             print(joueur.name)
             print(len(party_manager.players_list))
-        play_party(entries,nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)
+        play_party(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)
 
 
     # Centering the widgets in the window
