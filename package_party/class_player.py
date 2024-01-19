@@ -46,6 +46,7 @@ class Player:
             self.list_of_party_score.append([score_to_add1, score_to_add2])
 
         self.num_current_frame += 1
+        print(self.list_of_party_score)
 
 
     # The function to call at the start of player's frame

@@ -101,6 +101,6 @@ def play_party(nb_tours, nb_skittles, window,current_player,current_player_indic
     lbl_Score_Value.grid(row=4, column=2, padx=10, pady=10)
 
     # Validation
-    btnValider = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(),combo_Score_second.get()),majScore((int(combo_Score_first.get()),int(combo_Score_second.get())),current_player_indice),change_player(int(nb_tours), nb_skittles, window,int(current_player_indice))]) #verif_Skittles(combo_Score.get())
+    btnValider = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(),combo_Score_second.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()),int(combo_Score_second.get())),change_player(int(nb_tours), nb_skittles, window,int(current_player_indice))]) #verif_Skittles(combo_Score.get())
     btnValider.grid(row=5, column=1, columnspan=2, padx=10, pady=10)
 
