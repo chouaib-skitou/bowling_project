@@ -6,22 +6,23 @@ import pytest
 
 NUMER_OF_FRAME = 10
 
+
 @pytest.fixture(autouse=True)
 def reset_players_list():
     party_manager.players_list = []
 
 
 def test_add_player():
-    
-    player1 = class_player.Player(1,"David")
+    player1 = class_player.Player(1, "David")
     party_manager.add_player(player1)
     assert len(party_manager.players_list) == 1
     assert party_manager.players_list[0].name == "David"
 
-    player2 = class_player.Player(2,"Julien")
+    player2 = class_player.Player(2, "Julien")
     party_manager.add_player(player2)
     assert len(party_manager.players_list) == 2
     assert party_manager.players_list[1].name == "Julien"
+
 
 # Test sur la fonction permettant d'ajouter des joueurs à la partie depuis une liste de nom
 def test_create_player():
@@ -33,6 +34,18 @@ def test_create_player():
     assert party_manager.players_list[0].name == "Joueur1"
     assert party_manager.players_list[1].name == "Joueur2"
 
+
+def test_add_scores_to_player():
+    player = class_player.Player(0, "Player")
+
+    player.add_scores_to_frame(10, 0)
+    player.add_scores_to_frame(7, 3)
+
+    assert (player.list_of_party_score[0][0] == "X")
+    assert (player.list_of_party_score[0][1] == 0)
+
+    assert(player.list_of_party_score[1][0] == 7)
+    assert(player.list_of_party_score[1][1] == "|")
 
 
 '''
