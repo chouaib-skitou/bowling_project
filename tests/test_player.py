@@ -24,8 +24,9 @@ def test_add_player():
 
 # Test sur la fonction permettant d'ajouter des joueurs à la partie depuis une liste de nom
 def test_create_player():
-    names = ["Joueur1", "Joueur2"]
+    names = "Joueur1"
     party_manager.create_player(names)
+    party_manager.create_player("Joueur2")
 
     assert len(party_manager.players_list) == 2
     assert party_manager.players_list[0].name == "Joueur1"
