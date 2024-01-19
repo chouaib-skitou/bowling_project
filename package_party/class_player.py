@@ -181,7 +181,7 @@ class Player:
 
                 else:
                     currentScore += sum(frame_score_list[indexCurrentFrame])
-                    print("Avan derniere : tir normaux")
+                    print("Avant dernier : tir normaux")
 
             # DERNIERE FRAME
             elif (indexCurrentFrame == len(frame_score_list) - 1):
@@ -195,6 +195,7 @@ class Player:
                         currentScore += 20 + frame_score_list[indexCurrentFrame][2]
                         print("dernier : Strike + strikes et tir normal")
                     elif ("|" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si un spare
+                        print("frame_score_list !!!!", frame_score_list)
                         currentScore += 20
                         print("dernier : Strike + spare")
                     else:  # derniere frame : Si 2 tirs normaux
@@ -205,7 +206,7 @@ class Player:
                     if ("X" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si spare
                         currentScore += 20
                         print("dernier : Spare + Strike")
-                    if ("X" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si suivi d'un tir normal
+                    elif ("X" != frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si suivi d'un tir normal #Y AVAIT UNE GROSEE ERREUR ICI
                         currentScore += 10 + frame_score_list[indexCurrentFrame][2]
                         print("dernier : Spare + tir normal")
                 else:  # Si tir normal
