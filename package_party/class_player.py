@@ -1,17 +1,47 @@
 from package_party import party_manager
 
+
 class Player:
     id = 0
     name = ""
-
 
     def __init__(self, id, name):
         self.id = id
         self.name = name
         self.list_of_party_score = []
-        self.current_frame = 0
+        self.num_current_frame = 0
+        self.num_bowling_throw = 1
         self.total_score = 0
 
+        self.initialize_player_score()
+
+
+    def initialize_player_score(self):
+        initial_frame = ["-", "-"]
+        for i in range(party_manager.NUMER_OF_FRAME):
+            self.list_of_party_score.append(initial_frame)
+
+    def iterate_number_throw(self):
+        # Last frame
+        if self.num_current_frame == party_manager.NUMER_OF_FRAME - 1:
+            if self.num_bowling_throw == 1:
+                self.num_bowling_throw = 2
+            if self.num_bowling_throw == 2:
+                if ("X" in self.list_of_party_score[self.num_current_frame][self.num_bowling_throw]) \
+                        or ("|" in self.list_of_party_score[self.num_current_frame][self.num_bowling_throw]):
+                    self.num_bowling_throw = 3
+
+        # All frames except last one
+        else:
+            if self.num_bowling_throw == 1:
+                self.num_bowling_throw = 2
+            elif self.num_bowling_throw == 2:
+                self.num_bowling_throw = 1
+
+    def add_new_frame_score(self, score):
+        print
+        self.list_of_party_score[self.num_current_frame][self.num_bowling_throw] = score
+        self.iterate_number_throw()
 
     # The function to call at the start of player's frame
     # Should end at the end of the frame
@@ -31,7 +61,8 @@ class Player:
             print("Derniere frame !")
             finalLaunchNumber = 0  # determine le nombre de lance effectue dans la derniere frame
             counter = 0
-            while (finalLaunchNumber < nbLaunchFinalFrame):  # Droit a 3 lances si strike ou spare -> 1 lance supplementaire
+            while (
+                    finalLaunchNumber < nbLaunchFinalFrame):  # Droit a 3 lances si strike ou spare -> 1 lance supplementaire
                 if ((len(frame_score) == 2) and ("X" not in frame_score) and (
                         "|" not in frame_score)):  # cas où on a fait ni strike ni spare
                     finalLaunchNumber += 1
@@ -97,7 +128,7 @@ class Player:
                 if (launchNumber == 1):  # 2EME LANCE
                     skittlesTouched = self.checkSkittlesInTen()  # Nombre de quilles entre 0 et 10
                     skittlesTouched = self.checkCoherentSkittles(skittlesTouched,
-                                                            frame_score)  # Nombre de quilles coherent avec lance precedent
+                                                                 frame_score)  # Nombre de quilles coherent avec lance precedent
                     self.checkSpare(frame_score, skittlesTouched)  # Vérifie si on fait un spare
 
         self.list_of_party_score.append(frame_score)
@@ -105,7 +136,7 @@ class Player:
     def checkCoherentSkittlesLastFrame(parSkittlesTouched, par_frame_score, counter):
         print("frame_score[counter-1]", par_frame_score[counter])
         while (parSkittlesTouched > 10 - par_frame_score[counter]):
-            print(f"\t\tAu tour précédent vous avez renversé {par_frame_score[counter-1]} quilles :")
+            print(f"\t\tAu tour précédent vous avez renversé {par_frame_score[counter - 1]} quilles :")
             parSkittlesTouched = int(input("\t\tVeuillez renseigner un nombre cohérent :"))
         return parSkittlesTouched
 
@@ -135,5 +166,3 @@ class Player:
             par_frame_score.append("X")
         else:
             par_frame_score.append(parSkittlesTouched)
-
-

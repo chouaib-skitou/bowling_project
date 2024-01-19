@@ -33,6 +33,21 @@ def test_create_player():
     assert party_manager.players_list[1].name == "Joueur2"
 
 
+def test_add_score_to_player_frame():
+    print("add_score_to_player_frame()")
+    player1 = class_player.Player(1,"Joueur1")
+    party_manager.add_player(player1)
+
+    party_manager.players_list[0].add_new_frame_score(1)
+    party_manager.players_list[0].add_new_frame_score(2)
+    party_manager.players_list[0].add_new_frame_score(3)
+    party_manager.players_list[0].add_new_frame_score(4)
+
+    for score in party_manager.players_list[0].list_of_party_score:
+        print("score : ", score)
+
+    assert len(party_manager.players_list) == 2
+
 
 '''
 def test_next_player_frame():

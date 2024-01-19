@@ -1,7 +1,7 @@
 from package_party import class_player
 
-NUMER_OF_FRAME = 0
-NUMBER_OF_SKITLES = 0
+NUMER_OF_FRAME = 10
+NUMBER_OF_SKITLES = 10
 players_list = []
 
 
