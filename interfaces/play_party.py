@@ -33,9 +33,10 @@ def majScore(nb_skittles_fallen,current_player_indice):
     print(" - " + party_manager.players_list[current_player_indice].name + " : " + str(party_manager.players_list[current_player_indice].list_of_party_score))
 
 #on vérifie les valeurs de quilles tombées entrés dans le formulaire 
-def verfi_values_void(first,second):
-    if((first == "" and second == "") or (first == "") or (second == "")):
+def verfi_values_void(first, second, third= -1):
+    if (first == "" or second == "" or third == ""):
         return messagebox.showerror('Erreur ', " Veuillez renseigner toutes les valeurs !!! ")
+
 
 
 def play_party(nb_tours, nb_skittles, window,current_player,current_player_indice):
@@ -169,7 +170,7 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
 
             #nouveau bouton valider
             validation_button_visible = True
-            btnValidation = Button(frame, text="Validation", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
+            btnValidation = Button(frame, text="Validation", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get(),combo_Score_third.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
             btnValidation.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
 
 
@@ -187,7 +188,7 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
 
             #nouveau bouton valider
             validation_button_visible = True
-            btnValidation = Button(frame, text="Validation", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
+            btnValidation = Button(frame, text="Validation", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get(),combo_Score_third.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
             btnValidation.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
             if value_second < nb_skittles: # si le second des 3 lancé n'est pas un Strike, alors il faut laisser le nombre de quilles restante dans la 3ème TextBox
                 validation_button_visible = True
