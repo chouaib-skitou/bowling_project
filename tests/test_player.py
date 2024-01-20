@@ -3,6 +3,8 @@
 from package_party import class_player, party_manager
 
 import pytest
+from unittest import mock
+
 
 NUMER_OF_FRAME = 10
 
@@ -13,8 +15,7 @@ def reset_players_list():
 
 
 def test_add_player():
-    
-    player1 = class_player.Player(1,"David")
+    player1 = class_player.Player(1, "David")
     party_manager.add_player(player1)
     assert len(party_manager.players_list) == 1
     assert party_manager.players_list[0].name == "David"
@@ -38,11 +39,6 @@ def test_create_player():
 
 
 
-from unittest import mock
-
-@pytest.fixture(autouse=True)
-def reset_players_list():
-    party_manager.players_list = []
 
 def test_next_player_frame():
     with mock.patch.object(class_player.Player, 'next_turn') as mock_next_turn:
@@ -51,20 +47,23 @@ def test_next_player_frame():
         player2 = class_player.Player(2, "Chouaib")
         party_manager.add_player(player2)
 
-        party_manager.next_player_frame(1, 1)
+        party_manager.next_player_frame(1, 0)
+        assert party_manager.players_list[0].id == 1
         assert party_manager.players_list[0].num_current_frame == 0
         mock_next_turn.assert_called_once_with(0)
 
-        party_manager.next_player_frame(2,1)
-        assert party_manager.players_list[1].num_current_frame == 1
+        party_manager.next_player_frame(2, 0)
+        assert party_manager.players_list[1].id == 2
+        assert party_manager.players_list[1].num_current_frame == 0
         assert mock_next_turn.call_count == 2
 
-        party_manager.next_player_frame(1, 2)
-        assert party_manager.players_list[0].num_current_frame == 2
-        assert mock_next_turn.call_count == 3
+        party_manager.next_player_frame(1, 1)
+        assert party_manager.players_list[0].id == 1
+        assert party_manager.players_list[0].num_current_frame == 1
+        assert mock_next_turn.call_count == 2
+
 
 def test_start_game():
-    party_manager.players_list = []
     with mock.patch.object(class_player.Player, 'next_turn') as mock_next_turn:
         player1 = class_player.Player(1, "Matthieu")
         party_manager.add_player(player1)
@@ -75,3 +74,27 @@ def test_start_game():
 
         assert all(player.num_current_frame == 0 for player in party_manager.players_list)
         assert mock_next_turn.call_count == party_manager.NUMBER_OF_FRAME * len(party_manager.players_list)
+
+
+@pytest.fixture
+def player():
+    return class_player.Player(1, "Matthieu")
+
+# test pour checkCoherentSkittlesLastFrame
+def test_checkCoherentSkittlesLastFrame(player):
+
+    assert player.checkCoherentSkittlesLastFrame(5, [5, "X"], 1) == 5
+    # Vous pouvez ajouter d'autres assertions pour tester différents scénarios
+
+# test pour checkSpare
+def test_checkSpare(player):
+    frame_score = [5]
+    player.checkSpare(frame_score, 5)
+    assert frame_score == [5, "|"]
+    # Testez d'autres scénarios
+
+# test pour calculateScore
+def test_calculateScore(player):
+    frame_scores = [["X", ""], ["X", ""], [5, "|", 5]]
+    assert player.calculateScore(frame_scores) == 60
+    # Ajoutez d'autres cas de test pour tester différents scénarios

@@ -19,7 +19,7 @@ def test_valid_choices():
 def test_invalid_choices():
     # Testing the function with an invalid choice
     with pytest.raises(ValueError):
-        validate_player_choice(5)  # Assuming 5 is not a valid choice
+        validate_player_choice(5)
 
     # Testing with a non-numeric choice
     with pytest.raises(ValueError):
