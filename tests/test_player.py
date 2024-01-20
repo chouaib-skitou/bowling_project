@@ -34,7 +34,7 @@ def test_create_player():
     assert party_manager.players_list[0].name == "Joueur1"
     assert party_manager.players_list[1].name == "Joueur2"
 
-
+# Test des ajouts de scores au joueur via la fonction add_scores_to_player()
 def test_add_scores_to_player():
     player = class_player.Player(0, "Player")
 
