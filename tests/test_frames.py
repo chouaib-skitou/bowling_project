@@ -21,9 +21,10 @@ def test_spare_score():
     frame_score_list = [[5, 5], [3, 6], [7, 3], [2, 5], [5, 5], [2, 3], [5, 5], [3, 2], [1, 4], [2, 8, 5]]
                                                                                                 #[10,3,4]
     assert player.calculateScore(frame_score_list) == 96  # Score total calculé manuellement
-'''
+
 
 # Exemple de test pour une fonction avec entrée utilisateur
 @patch('builtins.input', side_effect=[5]) # quand ce n'est pas entre 0 et 10
 def test_checkSkittlesInTen(mock_input, player):
     assert player.checkSkittlesInTen() == 5
+'''
