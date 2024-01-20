@@ -81,7 +81,7 @@ def play_party(nb_tours, nb_skittles, window,current_player,current_player_indic
     def check_first_combo_value(*args):
         value_first = int(combo_Score_first_value.get()) if combo_Score_first_value.get() else 0
         value_second = int(combo_Score_second_value.get()) if combo_Score_second_value.get() else 0
-        if value_first + value_second > nb_skittles:
+        if  value_second > value_first: # si la valeur du second lancé est supérieur à celle du premier alors il y a une erreur
             return messagebox.showerror('Erreur ', " Erreur dans l'ordre de saisi des valeurs !!! ")
         if value_first == nb_skittles: #strike donc pas de second lancé
             combo_Score_second.config(values = "0",state="disabled")
@@ -175,7 +175,7 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
         value_first = int(combo_Score_first_value.get()) if combo_Score_first_value.get() else 0
         value_second = int(combo_Score_second_value.get()) if combo_Score_second_value.get() else 0
         nonlocal num_additional_combos,combo_Score_third
-        if value_first + value_second > nb_skittles:
+        if  value_second > value_first: # si la valeur du second lancé est supérieur à celle du premier alors il y a une erreur
             return messagebox.showerror('Erreur ', " Erreur dans l'ordre de saisi des valeurs !!! ")
         if value_first + value_second == nb_skittles: # s'il y a un SPARE
             if num_additional_combos < 1:
@@ -211,7 +211,7 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
 
             #nouveau bouton valider pouvant récupérer 3 scores
             validation_button_visible = True
-            btnValidation = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get(),combo_Score_third.get(),nb_skittles),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
+            btnValidation = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get(),combo_Score_third.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
             btnValidation.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
 
             btnCancel = Button(frame,text="Annuler",command=lambda :[clear_frame(window), LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
