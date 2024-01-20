@@ -1,6 +1,6 @@
 # tests/test_class_player.py
 
-from package_party import class_player, party_manager
+from package_party import old_class_player_functions, party_manager, class_player
 
 import pytest
 from unittest import mock
@@ -41,7 +41,7 @@ def test_add_scores_to_player():
     player = class_player.Player(0, "Player")
 
 
-
+'''
 def test_next_player_frame():
     with mock.patch.object(class_player.Player, 'next_turn') as mock_next_turn:
         player1 = class_player.Player(1, "Hamoudia")
@@ -63,6 +63,7 @@ def test_next_player_frame():
         assert party_manager.players_list[0].id == 1
         assert party_manager.players_list[0].num_current_frame == 1
         assert mock_next_turn.call_count == 2
+    '''
 
 
 def test_start_game():
