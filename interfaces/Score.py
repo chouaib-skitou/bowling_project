@@ -21,16 +21,12 @@ def window_score(window):
 
     i = 2
     tabScore = []
-    for player in party_manager.players_list:
-        listSum = 0
-        for number in player.list_of_party_score:
-            for element in number:
-                listSum += int(element)
-        ttk.Label(frame, text=str(player.name)).grid(row=i, column=0, padx=10, pady=10)
-        ttk.Label(frame, text="Voici ton score : "+str(listSum)).grid(row=i, column=1, padx=10, pady=10)
+    for joueur in party_manager.players_list:
+        ttk.Label(frame, text=str(joueur.name)).grid(row=i, column=0, padx=10, pady=10)
+        ttk.Label(frame, text="Voici ton score : "+str(joueur.calculateScore(joueur.list_of_party_score))).grid(row=i, column=1, padx=10, pady=10)
         i = i + 1
-        tabScore.append(listSum)
-    print(max(tabScore))
+        tabScore.append(joueur.calculateScore(joueur.list_of_party_score))
+
     index_max_value = tabScore.index(max(tabScore))
     print(index_max_value)
     if tous_egaux(tabScore):
