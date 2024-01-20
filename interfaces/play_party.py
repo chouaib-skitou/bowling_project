@@ -96,11 +96,21 @@ def play_party(nb_tours, nb_skittles, window,current_player,current_player_indic
     combo_Score_first_value.trace_add("write", check_first_combo_value)
     combo_Score_second_value.trace_add("write", check_first_combo_value)
     
+    #calcul du score
     listSum = 0
+    previous_element = None
+
     for number in current_player.list_of_party_score:
         for element in number:
-            if isinstance(element, int):
+            if element == 'X':
+                listSum += nb_skittles
+            elif element == '|':
+                if previous_element is not None and isinstance(previous_element, int):
+                    listSum += nb_skittles - previous_element
+            elif isinstance(element, int):
                 listSum += element
+
+            previous_element = element
     
 
     # Score
@@ -227,10 +237,19 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
     combo_Score_second_value.trace_add("write", check_first_combo_value)
     #calcul du score
     listSum = 0
+    previous_element = None
+
     for number in current_player.list_of_party_score:
         for element in number:
-            if isinstance(element, int):
+            if element == 'X':
+                listSum += nb_skittles
+            elif element == '|':
+                if previous_element is not None and isinstance(previous_element, int):
+                    listSum += nb_skittles - previous_element
+            elif isinstance(element, int):
                 listSum += element
+
+            previous_element = element
 
     # Score
     lbl_Score = tkinter.Label(frame, text="Score : ")
