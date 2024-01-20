@@ -1,5 +1,5 @@
 import tkinter
-from interfaces.play_party import play_party
+from interfaces.play_party import *
 from package_party.party_manager import *
 from package_party.class_player import *
 from tkinter import messagebox  
@@ -41,7 +41,10 @@ def players(count,nb_tours,nb_skittles, window, callback):
         for joueur in party_manager.players_list:
             print(joueur.name)
             print(len(party_manager.players_list))
-        play_party(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)
+        if nb_tours == 1:
+            LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)
+        else:
+            play_party(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)
 
 
     # Centering the widgets in the window
