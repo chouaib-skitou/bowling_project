@@ -148,10 +148,10 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
 
     num_additional_combos = 0
     combo_Score_third = None
-    validation_button_visible = False
     # Vérification de la valeur de la première ComboBox
     def check_first_combo_value(*args):
-        global validation_button_visible
+        validation_button_visible = False #variable de contrôle pour afficher ou non l'ancien bouton valider
+        #les deux valeurs de nos de ComBox si elles ne sont pas vident
         value_first = int(combo_Score_value.get()) if combo_Score_value.get() else 0
         value_second = int(combo_Score_second_value.get()) if combo_Score_second_value.get() else 0
         nonlocal num_additional_combos,combo_Score_third
@@ -160,7 +160,7 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
                 num_additional_combos += 1
 
                 # Ajouter une nouvelle ComboBox et une entrée
-                lbl_quille_third = tkinter.Label(frame, text="Nombre de quilles tombées, troisième lancé")
+                lbl_quille_third = tkinter.Label(frame, text="troisième lancé")
                 lbl_quille_third.grid(row=4, column=1, padx=10, pady=10)
 
                 combo_Score_third_value = StringVar()
@@ -173,14 +173,14 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
             btnValidation.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
 
 
-        if combo_Score_value.get() == str(nb_skittles):  # s'il y a un STRIKE
+        if value_first == nb_skittles:  # s'il y a un STRIKE
             if num_additional_combos < 1:
                 num_additional_combos += 1
 
                # Ajouter une nouvelle ComboBox et une entrée
-                lbl_quille_second = tkinter.Label(frame, text="SPARE : troisième lancé")
-                entry_quille_second = tkinter.Entry(frame, width=20)
-                lbl_quille_second.grid(row=4, column=1, padx=10, pady=10)
+                lbl_quille_third = tkinter.Label(frame, text="troisième lancé")
+                lbl_quille_third.grid(row=4, column=1, padx=10, pady=10)
+
                 combo_Score_third_value = StringVar()
                 combo_Score_third = ttk.Combobox(frame, values=list_of_number_falling_skittles_first, state="readonly", textvariable=combo_Score_third_value)
                 combo_Score_third.grid(row=4, column=2, padx=10, pady=10)
@@ -189,6 +189,17 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
             validation_button_visible = True
             btnValidation = Button(frame, text="Validation", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
             btnValidation.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
+            if value_second < nb_skittles: # si le second des 3 lancé n'est pas un Strike, alors il faut laisser le nombre de quilles restante dans la 3ème TextBox
+                validation_button_visible = True
+                list_of_number_falling_skittles_third = []
+                for i in range((int(nb_skittles)-value_second), -1, -1): #on donne un nombre de quilles restantes cohérents avec le premier lancé
+                    list_of_number_falling_skittles_third.append(i)
+                combo_Score_third.config(values=list_of_number_falling_skittles_third,state="readonly")
+        else: # si ce n'est pas un strike, on met le nombre de quilles restantes dans la seconde TextBox
+            list_of_number_falling_skittles_second = []
+            for i in range((int(nb_skittles)-value_first), -1, -1): #on donne un nombre de quilles restantes cohérents avec le premier lancé
+                list_of_number_falling_skittles_second.append(i)
+            combo_Score_second.config(values=list_of_number_falling_skittles_second,state="readonly")
         if validation_button_visible:
             btnValider.grid_remove()  # Masquer le bouton btnValider
             
