@@ -23,12 +23,8 @@ def test_half_strikes_half_spares_game():
     frame_score_list = [['X', ''], ['X', ''], ['X', ''], ['X', ''], ['X', ''], [5, '|'], [5, '|'], [5, '|'], [5, '|'], [5, '|', 0]]  # Alternance de strikes et spares
     # Alternance de strikes et spares
     # Pour les frames impaires (strikes), nous utilisons ['X', ''],
-    # et pour les frames paires (spares), nous utilisons [5, 5] suivi d'un lancer supplémentaire à 0 dans la dernière frame.
-
-    # Calcul du score attendu : chaque strike est suivi de deux lancers de 5 (pour les spares),
     # et chaque spare est suivi d'un lancer de 0.
     expected_score = 205  # Score total calculé manuellement
-
     assert player.calculateScore(frame_score_list) == expected_score
 
 

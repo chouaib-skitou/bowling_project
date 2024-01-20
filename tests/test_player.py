@@ -37,31 +37,41 @@ def test_create_player():
 
 
 
-'''
+
+from unittest import mock
+
+@pytest.fixture(autouse=True)
+def reset_players_list():
+    party_manager.players_list = []
+
 def test_next_player_frame():
-    player1 = package_party.class_player.Player(1,"Hamoudia")
-    add_player(player1)
-    player2 = package_party.class_player.Player(2,"Chouaib")
-    add_player(player2)
+    with mock.patch.object(class_player.Player, 'next_turn') as mock_next_turn:
+        player1 = class_player.Player(1, "Hamoudia")
+        party_manager.add_player(player1)
+        player2 = class_player.Player(2, "Chouaib")
+        party_manager.add_player(player2)
 
-    next_player_frame(1,0)
-    assert package_party.party_manager.players_list[0].current_turn == 1
+        party_manager.next_player_frame(1, 1)
+        assert party_manager.players_list[0].num_current_frame == 0
+        mock_next_turn.assert_called_once_with(0)
 
-    next_player_frame(2,1)
-    assert package_party.party_manager.players_list[1].current_turn == 1
+        party_manager.next_player_frame(2,1)
+        assert party_manager.players_list[1].num_current_frame == 1
+        assert mock_next_turn.call_count == 2
 
-    next_player_frame(1,0)
-    assert package_party.party_manager.players_list[0].current_turn == 2
-'''
-'''
+        party_manager.next_player_frame(1, 2)
+        assert party_manager.players_list[0].num_current_frame == 2
+        assert mock_next_turn.call_count == 3
+
 def test_start_game():
-    player1 = package_party.class_player.Player(1,"Matthieu")
-    add_player(player1)
-    player2 = package_party.class_player.Player(2,"Altaru")
-    add_player(player2)
+    party_manager.players_list = []
+    with mock.patch.object(class_player.Player, 'next_turn') as mock_next_turn:
+        player1 = class_player.Player(1, "Matthieu")
+        party_manager.add_player(player1)
+        player2 = class_player.Player(2, "Altaru")
+        party_manager.add_player(player2)
 
-    start_game()
+        party_manager.start_game()
 
-    for player in package_party.party_manager.players_list:
-        assert player.current_turn == NUMER_OF_FRAME
-'''
+        assert all(player.num_current_frame == 0 for player in party_manager.players_list)
+        assert mock_next_turn.call_count == party_manager.NUMBER_OF_FRAME * len(party_manager.players_list)
