@@ -1,7 +1,7 @@
 from package_party import class_player
 
 NUMBER_OF_FRAME = 3
-NUMBER_OF_SKITTLES = 9
+NUMBER_OF_SKITTLES = 10
 
 players_list = []
 
