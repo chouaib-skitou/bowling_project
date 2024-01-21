@@ -3,7 +3,7 @@ import party_manager
 
 
 # Create and add players to the party
-player1 = class_player.Player(len(party_manager.players_list) + 1, "AliceGomes", 4, 10)
+player1 = class_player.Player(len(party_manager.players_list) + 1, "AliceGomes")
 party_manager.add_player(player1)
 
 player2 = class_player.Player(len(party_manager.players_list) + 1, "Elsa la meuf d'Hamoudia")
@@ -22,3 +22,7 @@ party_manager.start_game()
 
 for e in party_manager.players_list:
     print(e.calculateScore(e.list_of_party_score))
+    #print(e.list_of_party_score)
+
+
+#Regler le problème de liste

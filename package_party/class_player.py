@@ -98,7 +98,6 @@ class Player:
                     print(f"\tLancé {e + 1} :")
                     skittlesTouched = self.askAndCheckSkittlesInTen()
                     if (e == 1):
-                        print("Lancé 222222")
                         if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):#Si Strike
                             frame_score.append('X')
                             print(f"\t\tVous avez fait un strike au lance 2 de la derniere frame ! Vous avez encore 1 lancé !")
@@ -107,7 +106,6 @@ class Player:
                             print(f"\t\t Vous avez encore 1 lancé !")
 
                     if (e == 2):  # au 3eme lancé vérifie que c'est coherent avec le precedent
-                        print("Dernier lancé 3")
                         skittlesTouched = self.checkCoherentSkittlesLastFrame(skittlesTouched, frame_score, e - 1)
                         if (skittlesTouched == party_manager.NUMBER_OF_SKITTLES):
                             frame_score.append('X')
@@ -116,9 +114,9 @@ class Player:
                             if (frame_score[e - 1] + skittlesTouched == party_manager.NUMBER_OF_SKITTLES):  # cas du spare
                                 frame_score.append("|")
                                 print(f"\t\tVous avez fait un spare au lance 3 de la derniere frame !")
-                        else:
-                            print("Condition 3: Encore 1 lancé")
-                            frame_score.append(skittlesTouched)
+                            else: #GROSSE ERREUR D'IDENTATION ICI AUSSI
+                                print("Condition 3: Encore 1 lancé")
+                                frame_score.append(skittlesTouched)
 
             else:  # 1er lancé de la derniere frame
                 frame_score.append(skittlesTouched)
@@ -154,8 +152,7 @@ class Player:
 
                 if (launchNumber == 1):  # 2EME LANCE
                     skittlesTouched = self.checkSkittlesInTen()  # Nombre de quilles entre 0 et NUMBER_OF_SKITTLES
-                    skittlesTouched = self.checkCoherentSkittles(skittlesTouched,
-                                                            frame_score)  # Nombre de quilles coherent avec lance precedent
+                    skittlesTouched = self.checkCoherentSkittles(skittlesTouched, frame_score)  # Nombre de quilles coherent avec lance precedent
                     self.checkSpare(frame_score, skittlesTouched)  # Vérifie si on fait un spare
 
         self.list_of_party_score.append(frame_score)
@@ -211,30 +208,30 @@ class Player:
             if (indexCurrentFrame == len(frame_score_list) - 2):
                 print("AVANT DERNIERE FRAME")
                 if ("X" == frame_score_list[indexCurrentFrame][0]):  #STRIKE DANS L'AVANT DERNIER FRAME
-                    if ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" == frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : Si Strike dans les 2 lancés suivants
+                    if ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" == frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : STRIKE + frame suivante = 2 Strikes
                         currentScore += party_manager.NUMBER_OF_SKITTLES * 3 #On prend en compte les 2 strike suivants donc *3
-                        print("avant dernier : Strike + 2 strikes")
-                    elif ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" !=frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : Si un strike et un tir normal
+                        print("avant dernier : STRIKE + frame suivante = 2 Strikes")
+                    elif ("X" == frame_score_list[indexCurrentFrame + 1][0] and "X" !=frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : STRIKE + frame suivante = strike et un tir normal
                         currentScore += (party_manager.NUMBER_OF_SKITTLES * 2) + frame_score_list[indexCurrentFrame + 1][1]
-                        print("avant dernier : Strike + strike et tir normal")
-                    elif ("|" == frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : Si Spare
-                        currentScore += 20
-                        print("avant dernier : Strike + 2 strikes")
+                        print("avant dernier : STRIKE + frame suivante = strike et tir normal")
+                    elif ("|" == frame_score_list[indexCurrentFrame + 1][1]):  # avant derniere frame : STRIKE + frame suivante = Spare
+                        currentScore += party_manager.NUMBER_OF_SKITTLES * 2
+                        print("avant dernier : Strike + frame suivante = Spare")
                     else:
-                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0] + frame_score_list[indexCurrentFrame + 1][1]  # avant derniere frame : Si 2 tirs normaux
-                        print("avant dernier : 2 tirs normaux")
+                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0] + frame_score_list[indexCurrentFrame + 1][1]  # avant derniere frame : STRIKE + frame suivante = 2 tirs normaux
+                        print("avant dernier : Strike + frame suivante = 2 tirs normaux")
 
                 elif ("|" == frame_score_list[indexCurrentFrame][1]):  # SPARE DANS L'AVANT DERNIERE FRAME
-                    if ("X" == frame_score_list[indexCurrentFrame + 1][0]):  # Si suivi d'un strike
+                    if ("X" == frame_score_list[indexCurrentFrame + 1][0]):  # SPARE + frame suivante = Strike
                         currentScore += 20
-                        print("avant dernier : Spare + Strike")
-                    else:  # Si suivi d'un tir normal
-                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0]
-                        print("avant dernier : Spare + tir normal")
+                        print("avant dernier : SPARE + frame suivante = Strike")
+                    else:
+                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0] # SPARE + frame suivante = Tir Normal
+                        print("avant dernier : SPARE + frame suivante = Tir Normal")
 
-                else:
+                else: # TIR NORMAUX DANS L'AVANT DERNIERE FRAME
                     currentScore += sum(frame_score_list[indexCurrentFrame])
-                    print("Avant dernier : tir normaux")
+                    print("Avant dernier : 2 tirs normaux")
 
             # DERNIERE FRAME
             elif (indexCurrentFrame == len(frame_score_list) - 1):
