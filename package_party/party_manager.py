@@ -16,7 +16,7 @@ def create_player(list_players_names):
 
 
 def next_player_frame(player_id, current_frame):
-    players_list[player_id].next_turn(current_frame)
+    players_list[player_id - 1].next_turn(current_frame)
 
 
 def start_game():

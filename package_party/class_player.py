@@ -12,8 +12,7 @@ class Player:
         self.list_of_party_score = []
         self.num_current_frame = 0
 
-
-    def add_scores_to_frame(self, score_launch_1, score_launch_2, score_launch_3 = -1):
+    def add_scores_to_frame(self, score_launch_1, score_launch_2, score_launch_3=-1):
         score_to_add3 = -1
 
         # First and second launch of two launches
@@ -30,7 +29,7 @@ class Player:
 
             # Second launch
             if (score_launch_1 + score_launch_2) == party_manager.NUMBER_OF_SKITTLES \
-                and score_to_add1 != "X":
+                    and score_to_add1 != "X":
                 score_to_add2 = "|"
             else:
                 score_to_add2 = score_launch_2
@@ -45,7 +44,7 @@ class Player:
 
             # Second launch
             if (score_launch_1 + score_launch_2) == party_manager.NUMBER_OF_SKITTLES \
-                and score_to_add1 != "X":
+                    and score_to_add1 != "X":
                 score_to_add2 = "|"
             elif score_to_add1 == "X" and score_launch_2 == party_manager.NUMBER_OF_SKITTLES:
                 score_to_add2 = "X"
@@ -83,7 +82,7 @@ class Player:
         print(f"Frame {current_frame + 1} :")
         frame_score = []  # stock le nombre de quilles renversées pour
 
-        #print("frameNumber (real number before incrementation) : ", current_frame)
+        # print("frameNumber (real number before incrementation) : ", current_frame)
         if (current_frame == party_manager.NUMBER_OF_FRAME - 1):  # LA DERNIERE FRAME
             print("Derniere frame !")
             print(f"\tLancé 1:")
@@ -133,7 +132,7 @@ class Player:
                 else:  # cas normal
                     skittlesTouched = self.checkCoherentSkittles(skittlesTouched, frame_score)
                     frame_score.append(skittlesTouched)
-                    print(f"\t\tVous n'avez plus de lancé !")
+                    print(f"\t\tVous n'avez plus de lancers !")
 
         else:
             for launchNumber in range(nbLaunch):
