@@ -34,7 +34,7 @@ def init_window(window):
 
     list_of_number_player = [1, 2, 3, 4]
     combo_number_player = ttk.Combobox(window, values=list_of_number_player, state="readonly")
-    combo_number_player.current(0)
+    combo_number_player.current(1)
     combo_number_player.pack()
 
     # Selection of the number of frame
@@ -55,5 +55,5 @@ def init_window(window):
     combo_number_skittles.current(0)
     combo_number_skittles.pack()
 
-    btnValider = Button(window, text="skittles score manager ultimate", command=lambda: [hide_player_choice(), AffichageJoueur(combo_number_player.get(),combo_number_tours.get(),combo_number_skittles.get())])
+    btnValider = Button(window, text="Bowling score manager ultimate", command=lambda: [hide_player_choice(), AffichageJoueur(int(combo_number_player.get()),int(combo_number_tours.get()),int(combo_number_skittles.get()))])
     btnValider.pack()

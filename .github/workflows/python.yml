@@ -10,6 +10,7 @@ on:
     - feature/interface_step_2
     - feature/setup_test_player
     - feature/tests
+    - feature/interface_graphique
     - feature/bowling_logic
   pull_request:
 jobs:

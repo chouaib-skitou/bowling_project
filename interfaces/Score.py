@@ -2,39 +2,40 @@ from . import config
 import tkinter
 from tkinter import *
 from tkinter import ttk 
-from interfaces.players_list import players_list,ChoixPlayer,Score
+from interfaces.players_list import *
+from interfaces.main_frame import *
 from package_party.party_manager import *
 from package_party.class_player import *
 
-window = config.window
-canvas = config.canvas
 
-CANVA_WIDTH = config.CANVA_WIDTH
-CANVA_HEIGHT = config.CANVA_HEIGHT
-WINDOW_WIDTH = config.WINDOW_WIDTH
-WINDOW_HEIGHT = config.WINDOW_HEIGHT
+def tous_egaux(liste):
+    return all(element == liste[0] for element in liste)
 
-#################################" Affichage des Scores##########################################"
-def window_score():
-    global window, canvas
-    window = tkinter.Tk()
-    window.title('Score final')
 
-    # window gestion
-    canvas = tkinter.Canvas(window, width=CANVA_WIDTH, height=CANVA_HEIGHT, bg='white')
-    canvas.place(x=10, y=10)
-    window_size_str = "{0}x{1}".format(WINDOW_WIDTH, WINDOW_HEIGHT)
-    window.geometry(window_size_str)
+def window_score(window):
+    # Create a frame to hold the widgets
+    frame = ttk.Frame(window)
+    frame.place(relx=0.5, rely=0.5, anchor='center')
 
     #Affichage des scores
-    lbl_score_player = tkinter.Label(window, text="Voici les scores :")
-    lbl_score_player.pack()
 
-    #dictionnaire contenant le nom de chaque joueur et son score final
-    tab_joueur = {"Player1": 50, "Player2": 80, "Player3": 11}
+    i = 2
+    tabScore = []
+    for joueur in party_manager.players_list:
+        ttk.Label(frame, text=str(joueur.name)).grid(row=i, column=0, padx=10, pady=10)
+        ttk.Label(frame, text="Voici ton score : "+str(joueur.calculateScore(joueur.list_of_party_score))).grid(row=i, column=1, padx=10, pady=10)
+        i = i + 1
+        tabScore.append(joueur.calculateScore(joueur.list_of_party_score))
 
-    for player, score in tab_joueur.items():
-        lbl_score_player = Label(window, text=f"{player} : {score}")
-        lbl_score_player.pack()
+    index_max_value = tabScore.index(max(tabScore))
+    print(index_max_value)
+    if tous_egaux(tabScore):
+        lblWinner = ttk.Label(frame, text="Pas de gagnant")
+        lblWinner.grid(row=i+1, column=0, padx=10, pady=10)
+    else:
+        lblWinner = ttk.Label(frame, text="The Winner is : "+str(party_manager.players_list[index_max_value].name))
+        lblWinner.grid(row=i+1, column=0, padx=10, pady=10)
 
+    btnBack = ttk.Button(frame, text="Back", width=20, command=window.destroy)
+    btnBack.grid(row=i+2, column=0, columnspan=2, pady=10)
     window.mainloop()
