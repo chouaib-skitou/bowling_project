@@ -60,7 +60,7 @@ def play_party(nb_tours, nb_skittles, window,current_player,current_player_indic
 
     # Combobox for the number of fallen skittles pins
     list_of_number_falling_skittles_first = []
-    for i in range(int(nb_skittles), -1, -1):
+    for i in range(int( nb_skittles), -1, -1):
         list_of_number_falling_skittles_first.append(i)
 
     combo_Score_first_value = StringVar()
@@ -81,8 +81,7 @@ def play_party(nb_tours, nb_skittles, window,current_player,current_player_indic
     def check_first_combo_value(*args):
         value_first = int(combo_Score_first_value.get()) if combo_Score_first_value.get() else 0
         value_second = int(combo_Score_second_value.get()) if combo_Score_second_value.get() else 0
-        if  value_second > value_first: # si la valeur du second lancé est supérieur à celle du premier alors il y a une erreur
-            return messagebox.showerror('Erreur ', " Erreur dans l'ordre de saisi des valeurs !!! ")
+
         if value_first == nb_skittles: #strike donc pas de second lancé
             combo_Score_second.config(values = "0",state="disabled")
             combo_Score_second.current(0)
