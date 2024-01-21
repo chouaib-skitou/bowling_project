@@ -124,7 +124,7 @@ def play_party(nb_tours, nb_skittles, window,current_player,current_player_indic
     btnValider = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(),combo_Score_second.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()),int(combo_Score_second.get())),change_player(int(nb_tours), nb_skittles, window,int(current_player_indice))]) #verif_Skittles(combo_Score.get())
     btnValider.grid(row=5, column=1, columnspan=2, padx=10, pady=10)
 
-    btnAnnuler = Button(frame,text="Annuler",command=lambda :[ clear_frame(window),play_party(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
+    btnAnnuler = Button(frame,text="Reset",command=lambda :[ clear_frame(window),play_party(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
     btnAnnuler.grid(row=6, column=1, columnspan=2, padx=10, pady=10)
 
 def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice):
@@ -194,7 +194,7 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
             btnValidation = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get(),combo_Score_third.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
             btnValidation.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
 
-            btnCancel = Button(frame,text="Annuler",command=lambda :[clear_frame(window), LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
+            btnCancel = Button(frame,text="Reset",command=lambda :[clear_frame(window), LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
             btnCancel.grid(row=7 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
 
         if value_first == nb_skittles:  # s'il y a un STRIKE
@@ -214,7 +214,7 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
             btnValidation = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get(),combo_Score_third.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get()),int(combo_Score_third.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
             btnValidation.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
 
-            btnCancel = Button(frame,text="Annuler",command=lambda :[clear_frame(window), LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
+            btnCancel = Button(frame,text="Reset",command=lambda :[clear_frame(window), LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
             btnCancel.grid(row=7 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
             if value_second < nb_skittles: # si le second des 3 lancé n'est pas un Strike, alors il faut laisser le nombre de quilles restante dans la 3ème TextBox
                 validation_button_visible = True
@@ -262,5 +262,5 @@ def LastFrame(nb_tours, nb_skittles, window,current_player,current_player_indice
     btnValider = Button(frame, text="Valider", command=lambda: [verfi_values_void(combo_Score_first.get(), combo_Score_second.get()),current_player.add_scores_to_frame(int(combo_Score_first.get()), int(combo_Score_second.get())), change_player(int(nb_tours), nb_skittles, window, int(current_player_indice))])
     btnValider.grid(row=6 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
 
-    btnAnnuler = Button(frame,text="Annuler",command=lambda :[ clear_frame(window),LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
+    btnAnnuler = Button(frame,text="Reset",command=lambda :[ clear_frame(window),LastFrame(nb_tours,nb_skittles,window,party_manager.players_list[current_player_indice],current_player_indice)])
     btnAnnuler.grid(row=7 + num_additional_combos, column=1, columnspan=2, padx=10, pady=10)
