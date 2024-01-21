@@ -218,15 +218,15 @@ class Player:
                         currentScore += party_manager.NUMBER_OF_SKITTLES * 2
                         print("avant dernier : Strike + frame suivante = Spare")
                     else:
-                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0] + frame_score_list[indexCurrentFrame + 1][1]  # avant derniere frame : STRIKE + frame suivante = 2 tirs normaux
+                        currentScore += party_manager.NUMBER_OF_SKITTLES + frame_score_list[indexCurrentFrame + 1][0] + frame_score_list[indexCurrentFrame + 1][1]  # avant derniere frame : STRIKE + frame suivante = 2 tirs normaux
                         print("avant dernier : Strike + frame suivante = 2 tirs normaux")
 
                 elif ("|" == frame_score_list[indexCurrentFrame][1]):  # SPARE DANS L'AVANT DERNIERE FRAME
                     if ("X" == frame_score_list[indexCurrentFrame + 1][0]):  # SPARE + frame suivante = Strike
-                        currentScore += 20
+                        currentScore += party_manager.NUMBER_OF_SKITTLES * 2
                         print("avant dernier : SPARE + frame suivante = Strike")
                     else:
-                        currentScore += 10 + frame_score_list[indexCurrentFrame + 1][0] # SPARE + frame suivante = Tir Normal
+                        currentScore +=  party_manager.NUMBER_OF_SKITTLES + frame_score_list[indexCurrentFrame + 1][0] # SPARE + frame suivante = Tir Normal
                         print("avant dernier : SPARE + frame suivante = Tir Normal")
 
                 else: # TIR NORMAUX DANS L'AVANT DERNIERE FRAME
@@ -238,9 +238,9 @@ class Player:
                 print("frame_score_list :",frame_score_list)
                 print("frame_score_list[indexCurrentFrame]", frame_score_list[indexCurrentFrame])
                 if ("X" == frame_score_list[indexCurrentFrame][0]):  # STRIKE DANS LA DERNIERE FRAME
-                    if ("X" == frame_score_list[indexCurrentFrame][1] and "X" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si Strike dans les 2 lancés suivants
+                    if ("X" == frame_score_list[indexCurrentFrame][1] and "X" == frame_score_list[indexCurrentFrame][2]):  # derniere frame : STRIKE + frame suivante = 2 Strikes
                         currentScore += party_manager.NUMBER_OF_SKITTLES * 3
-                        print("dernier : Strike + 2 strikes")
+                        print("derniere frame : STRIKE + frame suivante = 2 Strikes")
                     elif ("X" == frame_score_list[indexCurrentFrame][1] and "X" != frame_score_list[indexCurrentFrame][2]):  # derniere frame : Si Strike puis normal dans les 2 lancés suivants
                         currentScore += 20 + frame_score_list[indexCurrentFrame][2]
                         print("dernier : Strike + strikes et tir normal")
