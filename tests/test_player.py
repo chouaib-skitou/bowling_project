@@ -41,8 +41,6 @@ def test_add_scores_to_player():
     player = class_player.Player(0, "Player")
 
 
-
-
 def test_start_game():
     with mock.patch.object(class_player.Player, 'next_turn') as mock_next_turn:
         player1 = class_player.Player(1, "Matthieu")

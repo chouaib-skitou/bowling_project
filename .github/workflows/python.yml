@@ -12,7 +12,7 @@ on:
     - feature/tests
     - feature/setup_all_tests
     - feature/interface_graphique
-    - feature/bowling_logic
+    - feature/fixed_bowling_logic
   pull_request:
 jobs:
   build:
