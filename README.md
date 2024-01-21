@@ -17,11 +17,11 @@
 - Github Actions
 
 ## Compétences
-- David : 
-- Chouaib : Git, Github, Github Actions, Python
-- Hamoudia :
-- Matthieu :
-- Julien :
+- David : Pytest, Git, Github
+- Chouaib : Git, Github, Github Actions, Python, DevOps
+- Hamoudia : Tkinter(IHM), Python, Git, Github
+- Matthieu : Python, Git, Github
+- Julien : Git, Github, Python, Tkinter(IHM) 
 
 ## Nouveau dans le projet ?
 
